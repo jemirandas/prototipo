@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.9, created on 2015-05-22 23:36:58
+<?php /* Smarty version Smarty-3.0.9, created on 2015-05-23 02:30:13
          compiled from "C:/wamp/www/prototipo/templates\pedir_cita.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1027555fa17a5df9b6-07328135%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21289555fca1531d6f0-17245438%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '530c16803e52c6e8602e35be8620dc0362ceebbe' => 
     array (
       0 => 'C:/wamp/www/prototipo/templates\\pedir_cita.tpl',
-      1 => 1432330615,
+      1 => 1432341011,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1027555fa17a5df9b6-07328135',
+  'nocache_hash' => '21289555fca1531d6f0-17245438',
   'function' => 
   array (
   ),
@@ -20,6 +20,7 @@ $_smarty_tpl->decodeProperties(array (
 <script type="text/javascript">
 	var seleccion;
 	var activado = false;
+	
 	function selecciona(obj){
 		//obj.style.background = (obj.style.background=='blue') ? 'black' : 'blue';		
 		if(obj.style.background == "green"){
@@ -29,8 +30,9 @@ $_smarty_tpl->decodeProperties(array (
 			activado = true;
 		}
 	}
+	
 	function pintar(){
-			<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['i']);
+		<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['i']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('agenda')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['name'] = 'i';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['show'] = true;
@@ -54,18 +56,23 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['index_next'] = $_smarty
 $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['total']);
 ?>	
-				document.getElementById("<?php echo $_smarty_tpl->getVariable('agenda')->value[$_smarty_tpl->getVariable('smarty')->value['section']['i']['index']]->get('dia');?>
+			document.getElementById("<?php echo $_smarty_tpl->getVariable('agenda')->value[$_smarty_tpl->getVariable('smarty')->value['section']['i']['index']]->get('dia');?>
 :<?php echo $_smarty_tpl->getVariable('agenda')->value[$_smarty_tpl->getVariable('smarty')->value['section']['i']['index']]->get('hora');?>
-").style.background = "green";		
-			<?php endfor; endif; ?>
+").style.background="green";		
+		<?php endfor; endif; ?>
 	}
+	
 	function ir(){
-		if(activado==true)
+		if(activado==true){
 			location.href='<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
-pedir_cita.php?option=registrar&seleccion='+seleccion;
-		else
+pedir_cita.php?option=registrar&sucursal=<?php echo $_smarty_tpl->getVariable('sucursal')->value;?>
+&semana=<?php echo $_smarty_tpl->getVariable('semana')->value;?>
+&seleccion='+seleccion;
+		}else{
 			alert("¡Debe de seleccionar un horario primero!");
+		}
 	}
+	
 </script>
 
 <style>
@@ -89,28 +96,30 @@ pedir_cita.php?option=registrar&seleccion='+seleccion;
 <center>
 <?php if ($_smarty_tpl->getVariable('semana')->value=='actual'){?>
 	<?php if ($_smarty_tpl->getVariable('agenda')->value==null){?>
-		<b>No hay agenda para esta semana</b>		<br>
+		<font color='red'><b>No hay agenda para esta semana</b></font>		<br>
 	<?php }?>	
 		Semana Actual (<?php echo $_smarty_tpl->getVariable('primerDia')->value;?>
  al <?php echo $_smarty_tpl->getVariable('ultimoDia')->value;?>
 ) >> <a href="<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
-pedir_cita.php?option=horario&semana=siguiente">Semana Siguiente</a>
+pedir_cita.php?option=horario&semana=siguiente&sucursal=<?php echo $_smarty_tpl->getVariable('sucursal')->value;?>
+">Semana Siguiente</a>
 	
 <?php }else{ ?>
 	<?php if ($_smarty_tpl->getVariable('agenda')->value==null){?>
-		<b>No hay agenda para la próxima semana </b><br>		
+		<font color='red'><b>No hay agenda para la próxima semana </b></font><br>		
 	<?php }?>
-		Próxima Semana(<?php echo $_smarty_tpl->getVariable('primerDia2')->value;?>
+		Pr&oacutexima Semana(<?php echo $_smarty_tpl->getVariable('primerDia2')->value;?>
  al <?php echo $_smarty_tpl->getVariable('ultimoDia2')->value;?>
 ) 
 		>> <a href="<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
-pedir_cita.php?option=horario&semana=actual">Regresar a Semana Actual</a> 
+pedir_cita.php?option=horario&semana=actual&sucursal=<?php echo $_smarty_tpl->getVariable('sucursal')->value;?>
+">Regresar a Semana Actual</a> 
 <?php }?>
 
 
 	 <table id="t01" class="cita" cellpadding="0" bordercolor="blue" border="1"  width="50">
 	  <tr bgcolor="">
-		<th ><font color="">	  Hora</font></th>
+		<th ><font color="">Hora</font></th>
 		<th ><font color="">Lunes</th>
 		<th ><font color="">Martes</th>
 		<th ><font color="">Mi&eacutercoles</th>
@@ -140,12 +149,13 @@ $_smarty_tpl->tpl_vars['hora']->first = $_smarty_tpl->tpl_vars['hora']->iteratio
 		  </tr>
 	  <?php }} ?>	 
 	</table>
-	<input class="btn btn-primary" type="button" value="Pedir Cita" name="pedir_cita" 
-	onclick="ir()">
-</center>
+	<input class="btn btn-primary" type="button" value="Pedir Cita" name="pedir_cita" onclick="ir()">
 	<script>	
-	pintar();
-</script>
+		pintar();
+	</script>
+	
+</center>
+
 	
 
 

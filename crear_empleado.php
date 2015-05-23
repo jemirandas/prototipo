@@ -61,8 +61,7 @@ class c_insert extends super_controller {
             throw_exception("Debe ingresar un correo electrónico");
 			
 		}else if (!filter_var($empleado->get('correo_electronico'), FILTER_VALIDATE_EMAIL)) {
-					        $this->type_warning = "mensaje";
-
+			$this->type_warning = "mensaje";
 			$this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar un correo electrónico válido");			
 		}
@@ -78,7 +77,7 @@ class c_insert extends super_controller {
         $temp = $this->orm->get_objects("empleado");         
         
  		if(!is_empty($temp[0])){
-			        $this->type_warning = "advertencia";
+			$this->type_warning = "advertencia";
 			$this->engine->assign('form',$empleado);
             throw_exception( "La acción ha fallado porque ya  existe un empleado con esa cédula");
 		}

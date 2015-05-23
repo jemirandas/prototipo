@@ -1,6 +1,7 @@
 <script type="text/javascript">
 	var seleccion;
 	var activado = false;
+	
 	function selecciona(obj){
 		//obj.style.background = (obj.style.background=='blue') ? 'black' : 'blue';		
 		if(obj.style.background == "green"){
@@ -10,17 +11,21 @@
 			activado = true;
 		}
 	}
+	
 	function pintar(){
-			{section loop=$agenda name=i}	
-				document.getElementById("{$agenda[i]->get('dia')}:{$agenda[i]->get('hora')}").style.background = "green";		
-			{/section}
+		{section loop=$agenda name=i}	
+			document.getElementById("{$agenda[i]->get('dia')}:{$agenda[i]->get('hora')}").style.background="green";		
+		{/section}
 	}
+	
 	function ir(){
-		if(activado==true)
-			location.href='{$gvar.l_global}pedir_cita.php?option=registrar&seleccion='+seleccion;
-		else
+		if(activado==true){
+			location.href='{$gvar.l_global}pedir_cita.php?option=registrar&sucursal={$sucursal}&semana={$semana}&seleccion='+seleccion;
+		}else{
 			alert("¡Debe de seleccionar un horario primero!");
+		}
 	}
+	
 </script>
 
 <style>
@@ -44,22 +49,22 @@
 <center>
 {if $semana eq 'actual'}
 	{if $agenda eq null}
-		<b>No hay agenda para esta semana</b>		<br>
+		<font color='red'><b>No hay agenda para esta semana</b></font>		<br>
 	{/if}	
-		Semana Actual ({$primerDia} al {$ultimoDia}) >> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=siguiente">Semana Siguiente</a>
+		Semana Actual ({$primerDia} al {$ultimoDia}) >> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=siguiente&sucursal={$sucursal}">Semana Siguiente</a>
 	
 {else}
 	{if $agenda eq null}
-		<b>No hay agenda para la próxima semana </b><br>		
+		<font color='red'><b>No hay agenda para la próxima semana </b></font><br>		
 	{/if}
-		Próxima Semana({$primerDia2} al {$ultimoDia2}) 
-		>> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=actual">Regresar a Semana Actual</a> 
+		Pr&oacutexima Semana({$primerDia2} al {$ultimoDia2}) 
+		>> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=actual&sucursal={$sucursal}">Regresar a Semana Actual</a> 
 {/if}
 
 
 	 <table id="t01" class="cita" cellpadding="0" bordercolor="blue" border="1"  width="50">
 	  <tr bgcolor="">
-		<th ><font color="">	  Hora</font></th>
+		<th ><font color="">Hora</font></th>
 		<th ><font color="">Lunes</th>
 		<th ><font color="">Martes</th>
 		<th ><font color="">Mi&eacutercoles</th>
@@ -79,12 +84,13 @@
 		  </tr>
 	  {/for}	 
 	</table>
-	<input class="btn btn-primary" type="button" value="Pedir Cita" name="pedir_cita" 
-	onclick="ir()">
-</center>
+	<input class="btn btn-primary" type="button" value="Pedir Cita" name="pedir_cita" onclick="ir()">
 	<script>	
-	pintar();
-</script>
+		pintar();
+	</script>
+	
+</center>
+
 	
 
 
