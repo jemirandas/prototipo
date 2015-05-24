@@ -21,9 +21,9 @@ define('C_L_GLOBAL', 'http://localhost/prototipo/'); //application global link
 define('C_N_GLOBAL', 'Framework G - glight'); //application global title
 
 define('C_DB_SERVER', 'sql4.freesqldatabase.com'); //DB server
-define('C_DB_USER', 'sql478117'); //DB user
-define('C_DB_PASS', 'uG2%mX6!'); //DB password
-define('C_DB_DATABASE_NAME', 'sql478117'); //DB database name
+define('C_DB_USER', 'sql478438'); //DB user
+define('C_DB_PASS', 'xW9%mV9*'); //DB password
+define('C_DB_DATABASE_NAME', 'sql478438'); //DB database name
 define('C_DB_LIMIT', 10); //DB limit of elements by page
 
 require(C_FULL_PATH."modules/super_controller.php"); //Super Controller
