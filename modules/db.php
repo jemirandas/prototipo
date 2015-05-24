@@ -274,6 +274,21 @@ class db
 				}
 			break;
 			
+			case "semana_de_agenda":
+			
+				switch($option['lvl2'])
+				{
+					case "ultima":	         
+							$info = $this->get_data("SELECT*
+							FROM semana_de_agenda 
+							WHERE id=(
+							SELECT max(id) FROM semana_de_agenda
+							);"); 
+					break;				
+					
+				}
+			break;
+			
 			
 			case "administrador":
 			switch($option['lvl2'])
@@ -321,6 +336,12 @@ class db
                         $empleado = mysqli_real_escape_string($this->cn,$data['empleado']);
                         $info = $this->get_data("SELECT * FROM horario_de_atencion WHERE empleado='$empleado';"); 
                 break;
+				
+				
+				case "all": 
+					$info = $this->get_data("SELECT * FROM horario_de_atencion;"); 
+			     break;
+				
 			}
 			break;
                     

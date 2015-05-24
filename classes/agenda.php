@@ -41,6 +41,17 @@ class agenda extends object_standard
 			}
 			
 		break;
+
+		case "semana_de_agenda":
+		
+			switch($rel_name)
+			{
+				case "a_s":
+					return array("semana_de_agenda");
+				break;
+			}
+			
+		break;
 		
 		default:
 		break; 
