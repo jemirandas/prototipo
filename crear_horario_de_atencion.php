@@ -95,7 +95,7 @@ class c_insert extends super_controller {
     
 	}
 	
-	public function es_dia_de_crear_horario(){
+	public function es_dia_de_crear_agenda(){
 	
 	$this->orm->connect();
 		$option['semana_de_agenda']['lvl2'] = "ultima" ;     
@@ -121,17 +121,20 @@ class c_insert extends super_controller {
 		$ultimo_dia_semana_actual=date("Y-m-d",mktime(0,0,0,$mes_actual,$dia_actual+(7-$diaSemana_actual),$año_actual));
 		
 		
-		$datetime1 = new DateTime('2009-10-11');
-		$datetime2 = new DateTime('2009-10-13');
-		//$interval = $hoy->diff($ultima_semana->get->fecha_fin);
-		//echo $interval->format('%R%a días');
-		
-		print_r2($ultimo_dia_semana_actual);
-		print_r2($ultima_semana->get(fecha_fin));
-		
-		print_r2($ultima_semana);
+		$datetime_ultima_semana = new DateTime($ultima_semana->get(fecha_fin));
+		$datetime_hoy = new DateTime($año_actual.'-'.$mes_actual."-".$dia_actual);
 
+		$diferencia = $datetime_hoy->diff($datetime_ultima_semana);
+		$entero_diferencia=(int)$diferencia->format('%R%a');
+		 
+		if($entero_diferencia<7){
 		
+		
+		return true;
+		}
+		else{
+		return false;
+		}
 		
 		
 		
@@ -140,8 +143,10 @@ class c_insert extends super_controller {
 	}
 
 	
-	public function crear_horario()
+	public function crear_agenda()
     {
+	
+		if(!$this->es_dia_de_crear_agenda()){}
 	
 			$hoy = getdate();			
 				$year=$hoy[year];
@@ -160,7 +165,7 @@ class c_insert extends super_controller {
 				# A la fecha recibida, le sumamos el dia de la semana menos siete y obtendremos el domingo
 				$ultimoDia=date("d-m-Y",mktime(0,0,0,$month,$day+(7-$diaSemana),$year));
 				$ultimoDia2=date("d-m-Y",mktime(0,0,0,$month,$day+(7-$diaSemana)+7,$year));
-				//print_r2($agenda);
+				print_r2($agenda);
 				$this->engine->assign('primerDia',$primerDia);			
 				$this->engine->assign('primerDia2',$primerDia2);			
 				$this->engine->assign('ultimoDia',$ultimoDia);			
@@ -169,50 +174,29 @@ class c_insert extends super_controller {
 				$this->engine->assign('semana',$this->get->semana);
 				$this->engine->assign('agenda',$agenda);
 				
-		$this->orm->connect();
-		$option['horario_de_atencion']['lvl2'] = "all" ;     
-        $this->orm->read_data(array("horario_de_atencion"), $option);        
-        $horarios_atencion = $this->orm->get_objects("horario_de_atencion");
-		//print_r2($horarios_atencion);
-		
+			$this->orm->connect();
+			$option['horario_de_atencion']['lvl2'] = "all" ;     
+			$this->orm->read_data(array("horario_de_atencion"), $option);        
+			$horarios_atencion = $this->orm->get_objects("horario_de_atencion");
+			print_r2($horarios_atencion);
+						print_r2("sdsds");
 
+			$this->orm->close();
+		
+			// foreach($horarios_atencion as $horario){
+				// $agenda= new agenda();
+				// $agenda->hora=$horario->hora;
+				// print_r2($horario);
 		
 		
 		
-		foreach($horarios_atencion as $horario){
-		
-		
-		
-		}
-	    $this->orm->close();
-
-	
+			// }
+			
 	}
 
     public function display()
     {
-		if ($_SESSION['usuario']['type']=='administrador'){
-			
-			$this->orm->connect();
-			$option['sucursal']['lvl2'] = "all" ;     		
-			$this->orm->read_data(array("sucursal"), $option);        
-			$tempo = $this->orm->get_objects("sucursal");        
-			$this->orm->close();
-			
-			//print_r2($tempo);
-			
-			$this->engine->assign('sucursal',$tempo);
-			$this->engine->display('header.tpl');
-			$this->engine->display($this->temp_aux);
-			$this->engine->display($this->gvar['template_caso_uso6']);
-			$this->engine->display('footer.tpl');
-		}
-		else{
-			$_SESSION[nuestro_techo][mensaje][estado]="zona_restringida";
-			header('Location: index.php');
-		}	
 		
-
     }
     
     public function run()

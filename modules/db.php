@@ -131,6 +131,21 @@ class db
             }
             break;
 			
+			case "agenda":			
+            switch($options['lvl2'])
+            {
+                    case "normal":                              						
+						$dia = mysqli_real_escape_string($this->cn,$object->get('dia'));
+						$hora = mysqli_real_escape_string($this->cn,$object->get('hora'));
+						$empleado = mysqli_real_escape_string($this->cn,$object->get('empleado'));
+						$fecha = mysqli_real_escape_string($this->cn,$object->get('fecha'));
+						$disponibilidad = mysqli_real_escape_string($this->cn,$object->get('disponibilidad'));
+						$semana_de_agenda = mysqli_real_escape_string($this->cn,$object->get('semana_de_agenda'));$this->do_operation("INSERT INTO agenda (dia, hora, empleado, fecha, disponibilidad, semana_de_agenda) VALUES ('$dia', '$hora','$empleado', '$fecha', '$disponibilidad', '$semana_de_agenda');");						
+						
+                    break;
+            }
+            break;
+			
 			default: break;
 			
 			
