@@ -134,18 +134,31 @@ class db
 			case "agenda":			
             switch($options['lvl2'])
             {
-                    case "normal":                              						
+                    case "normal":
 						$dia = mysqli_real_escape_string($this->cn,$object->get('dia'));
 						$hora = mysqli_real_escape_string($this->cn,$object->get('hora'));
+
 						$empleado = mysqli_real_escape_string($this->cn,$object->get('empleado'));
 						$fecha = mysqli_real_escape_string($this->cn,$object->get('fecha'));
 						$disponibilidad = mysqli_real_escape_string($this->cn,$object->get('disponibilidad'));
-						$semana_de_agenda = mysqli_real_escape_string($this->cn,$object->get('semana_de_agenda'));$this->do_operation("INSERT INTO agenda (dia, hora, empleado, fecha, disponibilidad, semana_de_agenda) VALUES ('$dia', '$hora','$empleado', '$fecha', '$disponibilidad', '$semana_de_agenda');");						
-						
+						$semana_de_agenda = mysqli_real_escape_string($this->cn,$object->get('semana_de_agenda'));
+						$this->do_operation("INSERT INTO agenda (dia, hora, empleado, fecha, disponibilidad, semana) VALUES ('$dia', '$hora','$empleado', '$fecha', '$disponibilidad', '$semana_de_agenda');");					
+
                     break;
             }
             break;
 			
+			case "semana_de_agenda":			
+            switch($options['lvl2'])
+            {
+                    case "normal":                              						
+						$fecha_inicio = mysqli_real_escape_string($this->cn,$object->get('fecha_inicio'));
+						$fecha_fin = mysqli_real_escape_string($this->cn,$object->get('fecha_fin'));
+						$this->do_operation("INSERT INTO semana_de_agenda (fecha_inicio, fecha_fin) VALUES ('$fecha_inicio', '$fecha_fin');");						
+						
+                    break;
+            }
+            break;
 			default: break;
 			
 			
@@ -321,6 +334,11 @@ class db
                         $empleado = mysqli_real_escape_string($this->cn,$data['empleado']);
                         $info = $this->get_data("SELECT * FROM horario_de_atencion WHERE empleado='$empleado';"); 
                 break;
+				
+				
+				case "all": 
+					$info = $this->get_data("SELECT * FROM horario_de_atencion;"); 
+			     break;
 			}
 			break;
                     
