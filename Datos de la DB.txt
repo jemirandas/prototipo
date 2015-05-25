@@ -1,0 +1,25 @@
+Your account number is: 100305
+
+Your new database is now ready to use.
+
+To connect to your database use these details Host: sql4.freesqldatabase.com
+
+Database name: sql478438
+
+Database user: sql478438
+
+Database password: xW9%mV9*
+
+Port number: 3306
+
+
+CREATE TABLE cita 
+(codigo bigint(20) not null auto_increment,
+fecha date not null,
+hora enum('8','9','10','11','12','13','14','15','16','17','18','19','20') not null,
+empleado varchar(30) not null,
+cliente varchar(30) not null,
+PRIMARY KEY(codigo),
+CONSTRAINT c_e FOREIGN KEY (empleado) REFERENCES empleado(cedula) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT c_c FOREIGN KEY (cliente) REFERENCES cliente(cedula) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;

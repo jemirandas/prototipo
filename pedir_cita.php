@@ -8,8 +8,15 @@ class pedir_cita extends super_controller{
 			
 			$seleccion = $this->get->seleccion;
 			$fecha = explode(":", $seleccion);
-			echo "Usted seleccionó: día=$fecha[0], hora=$fecha[1], semana=".$this->get->semana;
-			$this->engine->display('header.tpl');
+			//echo "Usted seleccionó: día=$fecha[0], hora=$fecha[1], semana=".$this->get->semana;
+			$this->engine->assign('dia', $fecha[0]);
+                        $this->engine->assign('hora', $fecha[1]);
+                        $this->engine->assign('semana', $this->get->semana);
+                        
+                        //Verificar agenda
+                        
+                        
+                        $this->engine->display('header.tpl');
 			$this->engine->display($this->temp_aux);
 			$this->engine->display('conciliar_cita.tpl');						
 		}
