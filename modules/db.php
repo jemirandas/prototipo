@@ -284,6 +284,24 @@ class db
 			}
 			break;
 			
+			case "agenda":
+			
+				switch($option['lvl2'])
+				{
+					case "semana_actual":	         
+							$sucursal = mysqli_real_escape_string($this->cn,$data['sucursal']);
+							$info = $this->get_data("SELECT agenda.*, empleado.cedula, empleado.sucursal FROM agenda,empleado WHERE cedula = empleado and sucursal=$sucursal and disponibilidad = 1 and fecha > CURDATE() and 
+							WEEKOFYEAR(fecha) = WEEKOFYEAR(CURDATE());"); 
+					break;
+					
+					case "semana_siguiente":	         
+							$sucursal = mysqli_real_escape_string($this->cn,$data['sucursal']);
+							$info = $this->get_data("SELECT agenda.*, empleado.cedula, empleado.sucursal FROM agenda,empleado WHERE cedula = empleado and sucursal=$sucursal and disponibilidad = 1 and fecha > CURDATE() and 
+							WEEKOFYEAR(fecha) = (WEEKOFYEAR(CURDATE())+1);"); 
+					break;
+				}
+			break;
+			
 			
 			case "administrador":
 			switch($option['lvl2'])
@@ -314,9 +332,6 @@ class db
                 break;
 			}
 			break;
-
-			
-			
 			
 			case "sucursal":
 			switch($option['lvl2'])
