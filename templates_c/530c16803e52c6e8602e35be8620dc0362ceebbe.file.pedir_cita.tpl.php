@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.9, created on 2015-05-23 02:30:13
+<?php /* Smarty version Smarty-3.0.9, created on 2015-05-26 04:26:59
          compiled from "C:/wamp/www/prototipo/templates\pedir_cita.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:21289555fca1531d6f0-17245438%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:269365563d9f372ce65-27073001%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '530c16803e52c6e8602e35be8620dc0362ceebbe' => 
     array (
       0 => 'C:/wamp/www/prototipo/templates\\pedir_cita.tpl',
-      1 => 1432341011,
+      1 => 1432607215,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '21289555fca1531d6f0-17245438',
+  'nocache_hash' => '269365563d9f372ce65-27073001',
   'function' => 
   array (
   ),
@@ -67,6 +67,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['last']       = ($_smart
 			location.href='<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
 pedir_cita.php?option=registrar&sucursal=<?php echo $_smarty_tpl->getVariable('sucursal')->value;?>
 &semana=<?php echo $_smarty_tpl->getVariable('semana')->value;?>
+&bien_raiz=<?php echo $_smarty_tpl->getVariable('bien_raiz')->value;?>
 &seleccion='+seleccion;
 		}else{
 			alert("¡Debe de seleccionar un horario primero!");
@@ -102,6 +103,7 @@ pedir_cita.php?option=registrar&sucursal=<?php echo $_smarty_tpl->getVariable('s
  al <?php echo $_smarty_tpl->getVariable('ultimoDia')->value;?>
 ) >> <a href="<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
 pedir_cita.php?option=horario&semana=siguiente&sucursal=<?php echo $_smarty_tpl->getVariable('sucursal')->value;?>
+&bien_raiz=<?php echo $_smarty_tpl->getVariable('bien_raiz')->value;?>
 ">Semana Siguiente</a>
 	
 <?php }else{ ?>
@@ -113,6 +115,7 @@ pedir_cita.php?option=horario&semana=siguiente&sucursal=<?php echo $_smarty_tpl-
 ) 
 		>> <a href="<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
 pedir_cita.php?option=horario&semana=actual&sucursal=<?php echo $_smarty_tpl->getVariable('sucursal')->value;?>
+&bien_raiz=<?php echo $_smarty_tpl->getVariable('bien_raiz')->value;?>
 ">Regresar a Semana Actual</a> 
 <?php }?>
 

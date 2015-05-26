@@ -73,21 +73,21 @@ class c_modificar_empleado extends super_controller {
 		}
 		
 		
-		$cedula_vieja=$this->post->cedula_vieja;
+        $cedula_vieja=$this->post->cedula_vieja;
         $this->orm->connect();
-		$option['empleado']['lvl2'] = "one2" ;     
-		$cod['empleado']['cedula'] = $empleado->get('cedula');	
+	$option['empleado']['lvl2'] = "one2" ;     
+	$cod['empleado']['cedula'] = $empleado->get('cedula');	
         $this->orm->read_data(array("empleado"), $option, $cod);        
         $temp = $this->orm->get_objects("empleado");         
 		
         
- 		if(!is_empty($temp[0]) && $empleado->get('cedula') != $cedula_vieja){
-			$this->type_warning = "advertencia";
-			$this->engine->assign('form',$empleado);
+ 	if(!is_empty($temp[0]) && $empleado->get('cedula') != $cedula_vieja){
+            $this->type_warning = "advertencia";
+	    $this->engine->assign('form',$empleado);
             throw_exception( "La cédula que intenta ingresar ya existe");
-		}
+	}
 		
-		$empleado->auxiliars['cedula_vieja'] = $cedula_vieja;	
+	$empleado->auxiliars['cedula_vieja'] = $cedula_vieja;	
         $this->orm->update_data("normal", $empleado);
         $this->orm->close(); 
         

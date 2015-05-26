@@ -20,7 +20,7 @@
 	
 	function ir(){
 		if(activado==true){
-			location.href='{$gvar.l_global}pedir_cita.php?option=registrar&sucursal={$sucursal}&semana={$semana}&seleccion='+seleccion;
+			location.href='{$gvar.l_global}pedir_cita.php?option=registrar&sucursal={$sucursal}&semana={$semana}&bien_raiz={$bien_raiz}&seleccion='+seleccion;
 		}else{
 			alert("¡Debe de seleccionar un horario primero!");
 		}
@@ -51,14 +51,14 @@
 	{if $agenda eq null}
 		<font color='red'><b>No hay agenda para esta semana</b></font>		<br>
 	{/if}	
-		Semana Actual ({$primerDia} al {$ultimoDia}) >> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=siguiente&sucursal={$sucursal}">Semana Siguiente</a>
+		Semana Actual ({$primerDia} al {$ultimoDia}) >> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=siguiente&sucursal={$sucursal}&bien_raiz={$bien_raiz}">Semana Siguiente</a>
 	
 {else}
 	{if $agenda eq null}
 		<font color='red'><b>No hay agenda para la próxima semana </b></font><br>		
 	{/if}
 		Pr&oacutexima Semana({$primerDia2} al {$ultimoDia2}) 
-		>> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=actual&sucursal={$sucursal}">Regresar a Semana Actual</a> 
+		>> <a href="{$gvar.l_global}pedir_cita.php?option=horario&semana=actual&sucursal={$sucursal}&bien_raiz={$bien_raiz}">Regresar a Semana Actual</a> 
 {/if}
 
 
