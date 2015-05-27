@@ -6,7 +6,8 @@ class c_eliminar_empleado extends super_controller {
     
     public function del()
     {             
-        foreach($_POST['empleados_a_eliminar'] as $empleados_a_eliminar){
+        if(!is_empty($_POST['empleados_a_eliminar'])){
+		foreach($_POST['empleados_a_eliminar'] as $empleados_a_eliminar){
             $empleado = new empleado();
             $empleado->set('cedula', $empleados_a_eliminar);
             if(is_empty($empleado->get('cedula')))
@@ -17,7 +18,8 @@ class c_eliminar_empleado extends super_controller {
             $this->orm->close();
         
         };
-        
+		}
+		        
         $this->type_warning = "success";
         $this->msg_warning = "Borrado exitoso";
         
@@ -27,8 +29,7 @@ class c_eliminar_empleado extends super_controller {
     }
 
     public function display()
-    {
-	
+    {	
 		if ($_SESSION['usuario']['type']=='administrador'){
 
 			$options['empleado']['lvl2']="all";
@@ -36,12 +37,15 @@ class c_eliminar_empleado extends super_controller {
 			$this->orm->read_data(array("empleado"), $options);
 			$empleado=$this->orm->get_objects("empleado");
 			$this->orm->close();
-    
+                        $nroEmpleados=  count($empleado); 
+                        
+                        $this->engine->assign('nroEmpleados',$nroEmpleados);
 			$this->engine->assign('empleado',$empleado);
-        
+                        
+                        $this->engine->assign('title',"Eliminar Empleado");
 			$this->engine->display('header.tpl');
 			$this->engine->display($this->temp_aux);
-			$this->engine->display('extraer_empleados.tpl');
+			$this->engine->display('eliminar_empleado.tpl');
 			$this->engine->display('footer.tpl');
 				}
 		else{

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.9, created on 2015-05-23 02:17:32
+<?php /* Smarty version Smarty-3.0.9, created on 2015-05-25 17:03:13
          compiled from "C:/wamp/www/prototipo/templates\lateral.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:25516555fc71ce5c9e9-36557261%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '140485a967e2c427416bb7dd602f8ccef95245da' => 
     array (
       0 => 'C:/wamp/www/prototipo/templates\\lateral.tpl',
-      1 => 1432267609,
+      1 => 1432427133,
       2 => 'file',
     ),
   ),

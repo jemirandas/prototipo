@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.9, created on 2015-05-23 02:17:32
+<?php /* Smarty version Smarty-3.0.9, created on 2015-05-27 23:44:15
          compiled from "C:/wamp/www/prototipo/templates\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:23903555fc71c889a10-58608938%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1408855663aafcfa0b3-73070541%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '1842b70904989fdc08b31f556985ec8dadc5db8a' => 
     array (
       0 => 'C:/wamp/www/prototipo/templates\\header.tpl',
-      1 => 1432267609,
+      1 => 1432757748,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '23903555fc71c889a10-58608938',
+  'nocache_hash' => '1408855663aafcfa0b3-73070541',
   'function' => 
   array (
   ),
@@ -32,6 +32,11 @@ css/bootstrap.css); </style>
 css/bootstrap-responsive.css); </style> 
 <style type="text/css"> @import url(<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
 css/t_dark.css); </style> 
+<style type="text/css"> @import url(<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
+css/jquery-ui.min.css); </style> 
+<style type="text/css"> @import url(<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
+css/modificaciones.css); </style> 
+
 <script type='text/javascript'>l_global = '<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
 ';</script>
 <script src="<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
@@ -40,6 +45,8 @@ js/jquery-1.7.2.min.js" language="Javascript"></script>
 js/bootstrap.js" language="Javascript"></script> 
 <script src="<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
 js/funciones.js" language="Javascript"></script>
+<script src="<?php echo $_smarty_tpl->getVariable('gvar')->value['l_global'];?>
+js/jquery-ui.min.js" language="Javascript"></script>
 
 
 </head>
