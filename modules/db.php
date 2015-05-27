@@ -131,6 +131,34 @@ class db
             }
             break;
 			
+			case "agenda":			
+            switch($options['lvl2'])
+            {
+                    case "normal":
+						$dia = mysqli_real_escape_string($this->cn,$object->get('dia'));
+						$hora = mysqli_real_escape_string($this->cn,$object->get('hora'));
+
+						$empleado = mysqli_real_escape_string($this->cn,$object->get('empleado'));
+						$fecha = mysqli_real_escape_string($this->cn,$object->get('fecha'));
+						$disponibilidad = mysqli_real_escape_string($this->cn,$object->get('disponibilidad'));
+						$semana_de_agenda = mysqli_real_escape_string($this->cn,$object->get('semana_de_agenda'));
+						$this->do_operation("INSERT INTO agenda (dia, hora, empleado, fecha, disponibilidad, semana) VALUES ('$dia', '$hora','$empleado', '$fecha', '$disponibilidad', '$semana_de_agenda');");					
+
+                    break;
+            }
+            break;
+			
+			case "semana_de_agenda":			
+            switch($options['lvl2'])
+            {
+                    case "normal":                              						
+						$fecha_inicio = mysqli_real_escape_string($this->cn,$object->get('fecha_inicio'));
+						$fecha_fin = mysqli_real_escape_string($this->cn,$object->get('fecha_fin'));
+						$this->do_operation("INSERT INTO semana_de_agenda (fecha_inicio, fecha_fin) VALUES ('$fecha_inicio', '$fecha_fin');");						
+						
+                    break;
+            }
+            break;
 			default: break;
 			
 			
@@ -321,6 +349,11 @@ class db
                         $empleado = mysqli_real_escape_string($this->cn,$data['empleado']);
                         $info = $this->get_data("SELECT * FROM horario_de_atencion WHERE empleado='$empleado';"); 
                 break;
+				
+				
+				case "all": 
+					$info = $this->get_data("SELECT * FROM horario_de_atencion;"); 
+			     break;
 			}
 			break;
                     
@@ -369,6 +402,40 @@ class db
                     break;
                 }
             break;
+			
+			
+			case "agenda":
+			
+				switch($option['lvl2'])
+				{
+					case "semana_actual":	         
+							$sucursal = mysqli_real_escape_string($this->cn,$data['sucursal']);
+							$info = $this->get_data("SELECT agenda.*, empleado.cedula, empleado.sucursal FROM agenda,empleado WHERE cedula = empleado and sucursal=$sucursal and disponibilidad = 1 and fecha > CURDATE() and 
+							WEEKOFYEAR(fecha) = WEEKOFYEAR(CURDATE());"); 
+					break;
+					
+					case "semana_siguiente":	         
+							$sucursal = mysqli_real_escape_string($this->cn,$data['sucursal']);
+							$info = $this->get_data("SELECT agenda.*, empleado.cedula, empleado.sucursal FROM agenda,empleado WHERE cedula = empleado and sucursal=$sucursal and disponibilidad = 1 and fecha > CURDATE() and 
+							WEEKOFYEAR(fecha) = (WEEKOFYEAR(CURDATE())+1);"); 
+					break;
+				}
+			break;
+			
+			case "semana_de_agenda":
+			
+				switch($option['lvl2'])
+				{
+					case "ultima":	         
+							$info = $this->get_data("SELECT*
+							FROM semana_de_agenda 
+							WHERE id=(
+							SELECT max(id) FROM semana_de_agenda
+							);"); 
+					break;				
+					
+				}
+			break;
 			
 			
 
