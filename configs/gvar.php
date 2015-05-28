@@ -34,10 +34,15 @@ $gvar['m_incorrect_login']="usuario y/o contraseña incorrectos";
 $gvar['m_correct_login']="usuario autentificado con éxito";
 
 $gvar['caso_uso6']="crear empleado";
-$gvar['caso_uso8']="modificar empleado";
+$gvar['caso_uso8']['nombre']="modificar empleado";
 
 $gvar['template_caso_uso6']="crear_empleado.tpl";
 $gvar['template_caso_uso8']="modificar_empleado.tpl";
+
+$gvar['caso_uso8']['template_interface1']="buscar_empleado.tpl";
+$gvar['caso_uso8']['nombre']="buscar_empleado";
+
+
 
 
 

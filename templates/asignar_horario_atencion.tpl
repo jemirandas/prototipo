@@ -1,26 +1,121 @@
+ {literal}
+  <script>
+  $(function() {
+        var availableTags= [];
+        var nombre;
+        
+        {/literal}{section loop=$empleado name=i}{literal}
+             nombre = {/literal}"{$empleado[i]->get('nombre')}"{literal}.concat(" ");    
+             availableTags.push(nombre.concat({/literal}"{$empleado[i]->get('apellido')}"{literal})+" "+{/literal}"{$empleado[i]->get('cedula')}"{literal});
+        {/literal}{/section}{literal}
+        
+    $( "#busqueda" ).autocomplete({
+      source: availableTags
+    });
+  });
+  
+  </script>   
+ {/literal}
+ 
+ 
+ 
+ 
+ {literal}
+<script> 
+  function asignar_horario(divName){
+	  
+    var porNombre = document.getElementById("busqueda").value;
+	
+	
+	{/literal}{section loop=$empleado name=i}{literal}
+	var nombre={/literal}"{$empleado[i]->get('nombre')}"{literal};
+	var apellido={/literal}"{$empleado[i]->get('apellido')}"{literal};
+	var cedula={/literal}"{$empleado[i]->get('cedula')}"{literal};
+	
+if (porNombre == nombre+" "+apellido+" "+cedula){
+
+
+		
+var pagina={/literal}"{$gvar.l_global}"{literal}+"asignar_horario_atencion.php?option=horario&cedula="+{/literal}"{$empleado[i]->get('cedula')}"{literal};
+
+		location.href=pagina;
+
+
+
+
+
+		}
+		
+		
+		
+		
+		
+		
+		
+      
+    {/literal}{/section}{literal} 
+	document.getElementById("busqueda").value="";
+        
+  }       
+ 
+
+ 
+  </script>
+    {/literal}
+
+
+
+
+
+
 {if (is_empty($cedula))} 
 
 
-<h5>Haga clic en el nombre del empleado que desea modificar</h5>
-<br>
-    <table align="center" border="0" width="20" cellpadding="10" cellspacing="0">
+
+
+
+
+
+ <h3><div class="panel-heading" align="center">Buscar Empleados</div></h3>
+	   <div class="ui-widget" align="center">
+          <input name="busqueda" id="busqueda" type="text" size="30" maxlength="30"/> 
+          <input class="btn btn-primary" type="button" value="asignar horario" onclick="asignar_horario('dynamicInput');"/>
+		  
+		  	<input class="btn btn-primary"  type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'">	
 	
-	<tr><td width="10"><b>C&eacutedula</b></td> <td><b>Nombre</b></td>
-	{section loop=$empleado name=i}
-        <tr>
-			<td align="right"> {$empleado[i]->get('cedula')} </td>           
-            <td><a href="{$gvar.l_global}asignar_horario_atencion.php?option=horario&cedula={$empleado[i]->get('cedula')}"> 
-				{$empleado[i]->get('nombre')} {$empleado[i]->get('apellido')} </a>
-			</td>	
-        </tr>
-	{/section}
-	<tr></tr>
-	<tr><td>
+      </div>
+
+
+
+
+
 	
-	</td><td >		
-		<input class="btn btn-primary" type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'">
-	</td></tr>
-    </table>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 {else}
 <form name="asignar_horario" action="{$gvar.l_global}asignar_horario_atencion.php?option=horario&cedula={$cedula}" method="post">

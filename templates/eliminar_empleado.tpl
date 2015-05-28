@@ -6,7 +6,7 @@
         
         {/literal}{section loop=$empleado name=i}{literal}
              nombre = {/literal}"{$empleado[i]->get('nombre')}"{literal}.concat(" ");    
-             availableTags.push(nombre.concat({/literal}"{$empleado[i]->get('apellido')}"{literal}));
+             availableTags.push(nombre.concat({/literal}"{$empleado[i]->get('apellido')}"{literal})+" "+{/literal}"{$empleado[i]->get('cedula')}"{literal});
         {/literal}{/section}{literal}
         
     $( "#busqueda" ).autocomplete({
@@ -38,7 +38,7 @@
 	var apellido={/literal}"{$empleado[i]->get('apellido')}"{literal};
 	var cedula={/literal}"{$empleado[i]->get('cedula')}"{literal};
 	
-if (porNombre == nombre+" "+apellido){
+if (porNombre == nombre+" "+apellido+" "+cedula){
 		addAllInputs(divName, 'checkbox', nombre, apellido, cedula)
 
 		}
