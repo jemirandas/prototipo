@@ -359,6 +359,21 @@ class db
                                 break;
 			}
 			break;
+                        
+                        case "persona":
+			switch($option['lvl2'])
+			{
+				case "all": 
+					//
+				break;
+
+				case "one":        
+                                    
+                                    $cedula=mysqli_real_escape_string($this->cn,$data['cedula']);
+                                    $info = $this->get_data("SELECT * FROM persona WHERE cedula = '$cedula';");
+                                break;
+			}
+			break;
 			
 			case "agenda":
 			
@@ -382,7 +397,7 @@ class db
                                 $hora = mysqli_real_escape_string($this->cn,$data['hora']);
                                 $info = $this->get_data("SELECT agenda.*, empleado.cedula, empleado.sucursal FROM agenda,empleado "
                                         ."WHERE cedula = empleado and sucursal=$sucursal and dia='".$dia."' and hora='".$hora."' and  disponibilidad = 1 and 
-                                        WEEKOFYEAR(fecha) = WEEKOFYEAR(CURDATE()) order by rand() limit 1;"); 
+                                        fecha > CURDATE() and WEEKOFYEAR(fecha) = WEEKOFYEAR(CURDATE()) order by rand() limit 1;"); 
                             break;
 
                             case "veri_semana_siguiente":	         
@@ -391,7 +406,7 @@ class db
                                 $hora = mysqli_real_escape_string($this->cn,$data['hora']);
                                 $info = $this->get_data("SELECT agenda.*, empleado.cedula, empleado.sucursal FROM agenda,empleado "
                                         ."WHERE cedula = empleado and sucursal=$sucursal and dia='".$dia."' and hora='".$hora."' and disponibilidad = 1 and 
-                                        WEEKOFYEAR(fecha) = (WEEKOFYEAR(CURDATE())+1) order by rand() limit 1;"); 
+                                        fecha > CURDATE() and WEEKOFYEAR(fecha) = (WEEKOFYEAR(CURDATE())+1) order by rand() limit 1;"); 
                             break;
                         
                             

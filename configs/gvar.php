@@ -33,12 +33,11 @@ $gvar['m_password_empty']="debe ingresar una contraseña";
 $gvar['m_incorrect_login']="usuario y/o contraseña incorrectos";
 $gvar['m_correct_login']="usuario autentificado con éxito";
 
-$gvar['caso_uso6']="crear empleado";
-$gvar['caso_uso8']="modificar empleado";
-
+$gvar['caso_uso6']="Crear empleado";
+$gvar['caso_uso8']="Modificar empleado";
+$gvar['caso_uso12']="Pedir Cita";
 $gvar['template_caso_uso6']="crear_empleado.tpl";
 $gvar['template_caso_uso8']="modificar_empleado.tpl";
-
 
 
 $gvar['zona_restringida']="zona restringida";

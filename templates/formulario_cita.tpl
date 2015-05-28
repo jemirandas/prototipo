@@ -10,13 +10,15 @@
         <table width="100%" border="0" cellpadding="0" cellspacing="1">                
             <tr  colspan="2">
                 <td align="center">
-                     <b>C&eacutedula:<font color="red">*</b><input required type="text" name="cedula" {if $form ne null} value="{$form->get('cedula')}" {/if} />
+                     <b>C&eacutedula:<font color="red">*</b>
+                     <input required type="text" name="cedula" {if $form1 ne null} value="{$form1->get('cedula')}" {/if} />
                 </td>
             </tr>        	        
             <tr>
                 <input type="hidden" name="empleado" value="{$empleado}"/>
                 <input type="hidden" name="fecha" value="{$fecha}"/>
                 <input type="hidden" name="hora" value="{$hora}"/>
+                <input type="hidden" name="bien_raiz" value="{$bien_raiz}"/>
                 <td  align="center">                    
                     <input class="btn btn-primary" type="submit" value="Enviar" />                
                     
@@ -89,7 +91,7 @@
                     <b>Ingresos mensuales: <font color="blue">(opcional)</b>
                 </td>
                 <td>
-                    <input required type="text" name="ingreso_mensual" {if $form ne null} value="{$form->get('ingreso_mensual')}" {/if} />
+                    <input type="text" name="ingreso_mensual" {if $form ne null} value="{$form->get('ingreso_mensual')}" {/if} />
                 </td>
             </tr>
             

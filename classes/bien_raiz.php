@@ -23,7 +23,7 @@ class bien_raiz extends object_standard
 	//data about the attributes
 	public function metadata()
 	{
-		return array("numero_escritura" => array(), "precio_venta" => array(), "precio_alquiler" => array(),
+		return array("numero_escritura" => array(), "precio_venta" => array(), "precio_alquiler" => array(), "direccion" => array(),
                     "numero_habitaciones" => array(), "numero_banos" => array(), "balcon" => array() , "area" => array(),
                     "obervaciones" => array() , "sucursal" => array());
 	}
