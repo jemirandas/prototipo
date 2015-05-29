@@ -4,11 +4,12 @@ class agenda extends object_standard
 {
 	//attributes
 	protected $id;
+	protected $hora;
 	protected $fecha;
 	protected $dia;
-	protected $hora;	
 	protected $disponibilidad;	
 	protected $empleado;
+	protected $semana_de_agenda;
 	
 	//components
 	var $components = array();
@@ -19,7 +20,8 @@ class agenda extends object_standard
 	//data about the attributes
 	public function metadata()
 	{
-		return array("id" => array(), "fecha" => array(), "dia" => array(), "hora" => array(),  "disponibilidad" => array(),  "empleado" => array());
+		return array("id" => array(), "fecha" => array(), "dia" => array(), "hora" => array(),  "disponibilidad" => array(),  "empleado" => array(),  "semana_de_agenda" => array());
+
 	}
 		
 	public function primary_key()
@@ -37,6 +39,17 @@ class agenda extends object_standard
 			{
 				case "a_e":
 					return array("empleado");
+				break;
+			}
+			
+		break;
+
+		case "semana_de_agenda":
+		
+			switch($rel_name)
+			{
+				case "a_s":
+					return array("semana_de_agenda");
 				break;
 			}
 			
