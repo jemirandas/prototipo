@@ -81,21 +81,23 @@ var pagina={/literal}"{$gvar.l_global}"{literal}+"asignar_horario_atencion.php?o
           <input name="busqueda" id="busqueda" type="text" size="30" maxlength="30"/> 
           <input class="btn btn-primary" type="button" value="asignar horario" onclick="asignar_horario('dynamicInput');"/>
 		  
-		  	<input class="btn btn-primary"  type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'">	
 	
       </div>
 
+	 {section loop=$empleado name=i}
+	
+		<div class="rTableRow">
+			 <div class="rTableCell">{$empleado[i]->get('nombre')}</div>
+				
+			 <div class="rTableCell">{$empleado[i]->get('apellido')}</div>
+			
+			<div class="rTableCell"> <a href={$gvar.l_global}asignar_horario_atencion.php?option=cedula&cedula={$empleado[i]->get('cedula')}>{$empleado[i]->get('cedula')}</a> </div>
+		</div>
+	              
+    {/section}
+	
+	<div align="center"><input class="btn btn-primary" type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'"></div>
 
-
-
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

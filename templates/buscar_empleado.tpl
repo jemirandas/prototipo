@@ -58,11 +58,32 @@ var pagina={/literal}"{$gvar.l_global}"{literal}+"modificar_empleado.php?option=
 	   <div class="ui-widget" align="center">
           <input name="busqueda" id="busqueda" type="text" size="30" maxlength="30"/> 
           <input class="btn btn-primary" type="button" value="modificar" onclick="modificar('dynamicInput');"/>
-      </div>    
-
+      </div>
 	  
-
-
-	<input class="btn btn-primary" type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'">	
+	  
+	<h3>seleccione los empleados para eliminar</h3>	  
+	<div class="rTable" id=dynamicInput>	  
+			<div class="rTableRow">
+				 <div class="rTableHead"><strong>Nombre</strong></div>
+				 <div class="rTableHead"><span style="font-weight: bold;">Apellidos</span></div>
+				 <div class="rTableHead"><span style="font-weight: bold;">Cedula</span></div>
+			</div>
+     </div>
+	 
+	 
+	 
+	 {section loop=$empleado name=i}
 	
-</body>
+		<div class="rTableRow">
+			 <div class="rTableCell">{$empleado[i]->get('nombre')}</div>
+				
+			 <div class="rTableCell">{$empleado[i]->get('apellido')}</div>
+			
+			<div class="rTableCell"> <a href={$gvar.l_global}modificar_empleado.php?option=mostrar&cedula={$empleado[i]->get('cedula')}>{$empleado[i]->get('cedula')}</a> </div>
+		</div>
+	              
+    {/section}
+
+
+	<div align="center"><input class="btn btn-primary" type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'"></div>
+	
