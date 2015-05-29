@@ -41,9 +41,10 @@ function regresarModificar(){
 				{/section}
 			</select>
 			<br/>
+			<input type="hidden" name="cedula_vieja" {if $form ne null} value="{$form->get('cedula')}" {/if}/>
+
             <input class="btn btn-primary" type="submit" value="Guardar" />
 			<input class="btn btn-primary" type="button" value="Regresar" onclick="regresarModificar()">				
-			<input type="hidden" name="cedula_vieja" {if $form ne null} value="{$form->get('cedula')}" {/if}/>
         </td></tr>
     </table>
 </form>

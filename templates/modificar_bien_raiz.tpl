@@ -1,4 +1,4 @@
-<form name="crear_bien_raiz" action="{$gvar.l_global}crear_bien_raiz.php?option=add" method="post">
+<form name="crear_bien_raiz" action="{$gvar.l_global}modificar_bien_raiz.php?option=update" method="post">
 		
 		
     <div class="Bloque_formulario" align="center">
@@ -57,8 +57,8 @@
 			<div  class="Celda_formulario1" >¿El bien raiz tiene balcon?</div>
 			 <div class="Celda_formulario2">
 				<select name="balcon">
-					<option value="no">false</option>
-					<option value="si">true</option>			  
+					<option value="false">no</option>
+					<option value="true">si</option>			  
 				</select> 
 			</div> 			
 		</div> 
@@ -82,6 +82,7 @@
 		<div colspan="2">
 			<input class="btn btn-primary" type="submit" value="Crear" />
 			<input class="btn btn-primary" type="button" value="Regresar" onclick="regresarCrear()">	
+			<input type="hidden" name="numero_escritura_viejo" {if $form ne null} value="{$form->get('numero_escritura')}" {/if}/>
 
 		</div>
 	</div>

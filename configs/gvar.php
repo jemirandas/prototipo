@@ -40,8 +40,12 @@ $gvar['template_caso_uso6']="crear_empleado.tpl";
 $gvar['template_caso_uso8']="modificar_empleado.tpl";
 
 $gvar['caso_uso8']['template_interface1']="buscar_empleado.tpl";
-$gvar['caso_uso8']['nombre']="buscar_empleado";
-
+$gvar['caso_uso1']['nombre']="crear bien raiz";
+$gvar['caso_uso1']['template']="crear_bien_raiz.tpl";
+$gvar['caso_uso1']['controlador']="crear_bien_raiz.php";
+$gvar['caso_uso2']['nombre']="modificar bien raiz";
+$gvar['caso_uso2']['template']="modificar_bien_raiz.tpl";
+$gvar['caso_uso2']['controlador']="modificar_bien_raiz.php";
 
 
 
