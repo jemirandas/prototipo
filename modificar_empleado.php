@@ -108,14 +108,11 @@ class c_modificar_empleado extends super_controller {
 		$this->orm->connect();
 		$option['empleado']['lvl2'] = "one2" ;     
 		$cod['empleado']['cedula'] = $empleado->get('cedula');	
-        $this->orm->read_data(array("empleado"), $option, $cod); 
-		$this->orm->close(); 
-		
-        $temp = $this->orm->get_objects("empleado"); 
+                $this->orm->read_data(array("empleado"), $option, $cod); 
+                $temp = $this->orm->get_objects("empleado"); 
+		$this->orm->close(); 		
+                
         
-		
-			
-
  		 if(is_empty($temp[0])){
 			 $this->type_warning = "advertencia";			
              throw_exception( "No existe un empleado con esa cédula");
