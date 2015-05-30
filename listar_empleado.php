@@ -106,9 +106,7 @@ class c_insert extends super_controller {
 			$this->orm->read_data(array("sucursal"), $option);        
 			$tempo = $this->orm->get_objects("sucursal");        
 			$this->orm->close();
-			
-			//print_r2($tempo);
-			
+				
 			$this->engine->assign('sucursal',$tempo);
 			$this->engine->display('header.tpl');
 			$this->engine->display($this->temp_aux);
