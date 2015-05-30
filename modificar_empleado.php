@@ -94,7 +94,7 @@ class c_modificar_empleado extends super_controller {
         $this->type_warning = "success";
         $this->msg_warning = "El empleado se actualizó exitosamente";
         
-		$this->engine->assign('form',$empleado);
+	$this->engine->assign('form',$empleado);
         $this->temp_aux = 'message.tpl';
         $this->engine->assign('type_warning',$this->type_warning);
         $this->engine->assign('msg_warning',$this->msg_warning);
