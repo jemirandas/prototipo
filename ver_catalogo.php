@@ -11,8 +11,9 @@ public function display(){
     $components['sucursal']['bien_raiz']=array('b_s');
     $this->orm->connect();
     $this->orm->read_data(array("sucursal","bien_raiz"), $options,$cod);
-    $sucursal=$this->orm->get_objects("sucursal",$components);
-    //print_r2($sucursal);
+    //$sucursal=$this->orm->get_objects("sucursal",$components);
+    print_r2($id);
+    
     $this->orm->close();
     
     $this->engine->assign('sucursal',$sucursal[0]);

@@ -227,21 +227,21 @@ class db
             }
             break;
 			
-			case "bien_raiz":
+	case "bien_raiz":
             switch($options['lvl2'])
             {
                     case "normal":                              						
-						$numero_escritura = mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
-						$precio_venta = mysqli_real_escape_string($this->cn,$object->get('precio_venta'));
-						$precio_alquiler = mysqli_real_escape_string($this->cn,$object->get('precio_alquiler'));
-						$direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
-						$numero_habitaciones = mysqli_real_escape_string($this->cn,$object->get('numero_habitaciones'));
-						$numero_banos = mysqli_real_escape_string($this->cn,$object->get('numero_banos'));
-						$balcon = mysqli_real_escape_string($this->cn,$object->get('balcon'));
-						$observaciones = mysqli_real_escape_string($this->cn,$object->get('observaciones'));
-						$sucursal = mysqli_real_escape_string($this->cn,$object->get('sucursal'));
-						$area = mysqli_real_escape_string($this->cn,$object->get('area'));
-						$this->do_operation("INSERT INTO bien_raiz (numero_escritura, precio_venta, precio_alquiler, direccion,numero_habitaciones,numero_banos,balcon,observaciones,sucursal,area) VALUES ('$numero_escritura', '$precio_venta', '$precio_alquiler', '$direccion','$numero_habitaciones','$numero_banos','$balcon','$observaciones','$sucursal','$area') ;");						
+                        $numero_escritura = mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
+                        $precio_venta = mysqli_real_escape_string($this->cn,$object->get('precio_venta'));
+                        $precio_alquiler = mysqli_real_escape_string($this->cn,$object->get('precio_alquiler'));
+                        $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
+                        $numero_habitaciones = mysqli_real_escape_string($this->cn,$object->get('numero_habitaciones'));
+                        $numero_banos = mysqli_real_escape_string($this->cn,$object->get('numero_banos'));
+                        $balcon = mysqli_real_escape_string($this->cn,$object->get('balcon'));
+                        $observaciones = mysqli_real_escape_string($this->cn,$object->get('observaciones'));
+                        $sucursal = mysqli_real_escape_string($this->cn,$object->get('sucursal'));
+                        $area = mysqli_real_escape_string($this->cn,$object->get('area'));
+                        $this->do_operation("INSERT INTO bien_raiz (numero_escritura, precio_venta, precio_alquiler, direccion,numero_habitaciones,numero_banos,balcon,observaciones,sucursal,area) VALUES ('$numero_escritura', '$precio_venta', '$precio_alquiler', '$direccion','$numero_habitaciones','$numero_banos','$balcon','$observaciones','$sucursal','$area') ;");						
 						
                     break;
             }
@@ -346,36 +346,30 @@ class db
 			
 			case "bien_raiz":
 			switch($options['lvl2'])
-            {
-                    case "normal":
-						$auxiliars = $object->get('auxiliars');
-						$numero_escritura_viejo = mysqli_real_escape_string($this->cn,$auxiliars['numero_escritura_viejo']);
-						print_r2($numero_escritura_viejo);
-						$numero_escritura = mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
-						$precio_venta = mysqli_real_escape_string($this->cn,$object->get('precio_venta'));
-						$precio_alquiler = mysqli_real_escape_string($this->cn,$object->get('precio_alquiler'));
-						$direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
-						$numero_habitaciones = mysqli_real_escape_string($this->cn,$object->get('numero_habitaciones'));
-						$numero_banos = mysqli_real_escape_string($this->cn,$object->get('numero_banos'));
-						$balcon = mysqli_real_escape_string($this->cn,$object->get('balcon'));
-						$observaciones = mysqli_real_escape_string($this->cn,$object->get('observaciones'));
-						$sucursal = mysqli_real_escape_string($this->cn,$object->get('sucursal'));
-						$area = mysqli_real_escape_string($this->cn,$object->get('area'));
-						
-						$this->do_operation("UPDATE bien_raiz SET numero_escritura= '$numero_escritura', precio_venta='$precio_venta', precio_alquiler='$precio_alquiler', direccion='$direccion',numero_habitaciones='$numero_habitaciones',numero_banos='$numero_banos',balcon='$balcon',observaciones='$observaciones',sucursal='$sucursal',area='$area'  WHERE numero_escritura = '$numero_escritura_viejo' ;");
-						
-												
-						//unset($hasher);		
-                    break;
-            }
+                        {
+                                case "normal":
+                                    $auxiliars = $object->get('auxiliars');
+                                    $numero_escritura_viejo = mysqli_real_escape_string($this->cn,$auxiliars['numero_escritura_viejo']);
+                                    print_r2($numero_escritura_viejo);
+                                    $numero_escritura = mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
+                                    $precio_venta = mysqli_real_escape_string($this->cn,$object->get('precio_venta'));
+                                    $precio_alquiler = mysqli_real_escape_string($this->cn,$object->get('precio_alquiler'));
+                                    $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
+                                    $numero_habitaciones = mysqli_real_escape_string($this->cn,$object->get('numero_habitaciones'));
+                                    $numero_banos = mysqli_real_escape_string($this->cn,$object->get('numero_banos'));
+                                    $balcon = mysqli_real_escape_string($this->cn,$object->get('balcon'));
+                                    $observaciones = mysqli_real_escape_string($this->cn,$object->get('observaciones'));
+                                    $sucursal = mysqli_real_escape_string($this->cn,$object->get('sucursal'));
+                                    $area = mysqli_real_escape_string($this->cn,$object->get('area'));
+
+                                    $this->do_operation("UPDATE bien_raiz SET numero_escritura= '$numero_escritura', precio_venta='$precio_venta', precio_alquiler='$precio_alquiler', direccion='$direccion',numero_habitaciones='$numero_habitaciones',numero_banos='$numero_banos',balcon='$balcon',observaciones='$observaciones',sucursal='$sucursal',area='$area'  WHERE numero_escritura = '$numero_escritura_viejo' ;");
+
+
+                                                            //unset($hasher);		
+                                break;
+                        }
 			break;
-			
-			
-			
-			
-			
-			
-			
+						
 			default: break;
 		}
 	}
@@ -535,32 +529,32 @@ class db
 			break;
 			
 			case "sucursal":
-			switch($option['lvl2'])
-			{
-                            case "all":                                 
-				$info = $this->get_data("SELECT * FROM sucursal;"); 
-			     break;
-                         
-                            case "one":                                 
-                                $id = mysqli_real_escape_string($this->cn,$data['ID']);
-                                $info = $this->get_data("SELECT * FROM sucursal where ID = '$id';"); 
-                            break;
-			}
+                            switch($option['lvl2'])
+                           {
+                                    case "all":                                 
+                                        $info = $this->get_data("SELECT * FROM sucursal;"); 
+                                     break;
+
+                                    case "one":                                 
+                                        $id = mysqli_real_escape_string($this->cn,$data['ID']);
+                                        $info = $this->get_data("SELECT * FROM sucursal where ID = '$id';"); 
+                                    break;
+                            }
 			break;
-                    
-                        case "bien_raiz":
-			switch($option['lvl2'])
-			{
-                            case "all":                                 
-				$info = $this->get_data("SELECT * FROM bien_raiz;"); 
-			     break;
                             
-                            case "one": 
-                                $nro = mysqli_real_escape_string($this->cn,$data['numero_escritura']);
-                                $info = $this->get_data("SELECT * FROM bien_raiz where numero_escritura = '$nro';"); 
-			     break;
-                         
-			}
+                        case "bien_raiz":
+                            switch($option['lvl2'])
+                            {
+                                case "all":                                 
+                                    $info = $this->get_data("SELECT * FROM bien_raiz;"); 
+                                 break;
+
+                                case "one": 
+                                    $nro = mysqli_real_escape_string($this->cn,$data['numero_escritura']);
+                                    $info = $this->get_data("SELECT * FROM bien_raiz where numero_escritura = '$nro';"); 
+                                 break;
+
+                            }
 			break;
 			
 			case "horario_de_atencion":

@@ -2,6 +2,7 @@
 require('configs/include.php');
 class c_ver_sucursales extends super_controller{
 public function display(){
+    
     $options['sucursal']['lvl2']="all";
     $this->orm->connect();
     $this->orm->read_data(array("sucursal"), $options);
