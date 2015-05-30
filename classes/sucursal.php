@@ -9,7 +9,7 @@
 class sucursal extends object_standard
 {
     //attribute variables
-	protected $ID;
+    protected $ID;
     protected $direccion;
     protected $ciudad;
     protected $telefono;
@@ -31,6 +31,7 @@ class sucursal extends object_standard
     public function primery_key(){
         return array("ID");
     }
+    
     public function relational_keys($class, $rel_name){
         switch($class){
             default: break;

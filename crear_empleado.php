@@ -75,13 +75,13 @@ class c_insert extends super_controller {
 		$cod['empleado']['cedula'] = $empleado->get('cedula');	
         $this->orm->read_data(array("empleado"), $option, $cod);        
         $temp = $this->orm->get_objects("empleado");         
-        
+         $this->orm->close(); 
  		if(!is_empty($temp[0])){
 			$this->type_warning = "advertencia";
 			$this->engine->assign('form',$empleado);
             throw_exception( "La acción ha fallado porque ya  existe un empleado con esa cédula");
 		}
-				
+	$this->orm->connect();			
         $this->orm->insert_data("normal", $empleado);
         $this->orm->close(); 
         
