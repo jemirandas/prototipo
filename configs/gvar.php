@@ -33,11 +33,22 @@ $gvar['m_password_empty']="debe ingresar una contraseña";
 $gvar['m_incorrect_login']="usuario y/o contraseña incorrectos";
 $gvar['m_correct_login']="usuario autentificado con éxito";
 
-$gvar['caso_uso6']="Crear empleado";
-$gvar['caso_uso8']="Modificar empleado";
 $gvar['caso_uso12']="Pedir Cita";
+
+$gvar['caso_uso6']="crear empleado";
+$gvar['caso_uso8']['nombre']="modificar empleado";
+
 $gvar['template_caso_uso6']="crear_empleado.tpl";
 $gvar['template_caso_uso8']="modificar_empleado.tpl";
+
+$gvar['caso_uso8']['template_interface1']="buscar_empleado.tpl";
+$gvar['caso_uso1']['nombre']="crear bien raiz";
+$gvar['caso_uso1']['template']="crear_bien_raiz.tpl";
+$gvar['caso_uso1']['controlador']="crear_bien_raiz.php";
+$gvar['caso_uso2']['nombre']="modificar bien raiz";
+$gvar['caso_uso2']['template']="modificar_bien_raiz.tpl";
+$gvar['caso_uso2']['controlador']="modificar_bien_raiz.php";
+
 
 
 $gvar['zona_restringida']="zona restringida";

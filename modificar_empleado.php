@@ -139,6 +139,7 @@ class c_modificar_empleado extends super_controller {
 			$this->engine->assign('sucursal',$tempo);
 			$this->engine->display('header.tpl');
 			$this->engine->display($this->temp_aux);
+			$this->engine->assign('title',$this->gvar['caso_uso8']);
 			$this->engine->display($this->gvar['template_caso_uso8']);
 			$this->engine->display('footer.tpl');
 		}
@@ -152,7 +153,7 @@ class c_modificar_empleado extends super_controller {
     
     public function run()
     {
-		$this->engine->assign('title',$this->gvar['caso_uso8']);
+
 
         try {
             if (isset($this->get->option)){
