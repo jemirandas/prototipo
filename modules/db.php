@@ -551,10 +551,15 @@ class db
                         case "bien_raiz":
 			switch($option['lvl2'])
 			{
+                            case "all":                                 
+				$info = $this->get_data("SELECT * FROM bien_raiz;"); 
+			     break;
+                            
                             case "one": 
                                 $nro = mysqli_real_escape_string($this->cn,$data['numero_escritura']);
                                 $info = $this->get_data("SELECT * FROM bien_raiz where numero_escritura = '$nro';"); 
 			     break;
+                         
 			}
 			break;
 			

@@ -28,7 +28,7 @@ define('C_DB_DATABASE_NAME', 'sql378935'); //DB database name
 // define('C_DB_SERVER', 'localhost'); //DB server
 // define('C_DB_USER', 'root'); //DB user
 // define('C_DB_PASS', ''); //DB password
-// define('C_DB_DATABASE_NAME', 'nuestro_techo'); //DB database name
+// define('C_DB_DATABASE_NAME', 'sql378935'); //DB database name
 
 define('C_DB_LIMIT', 10); //DB limit of elements by page
 

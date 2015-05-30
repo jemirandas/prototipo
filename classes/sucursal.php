@@ -9,7 +9,7 @@
 class sucursal extends object_standard
 {
     //attribute variables
-	protected $ID;
+    protected $ID;
     protected $direccion;
     protected $ciudad;
     protected $telefono;
