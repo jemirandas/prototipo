@@ -551,8 +551,9 @@ class db
                         case "bien_raiz":
 			switch($option['lvl2'])
 			{
-                            case "all":                                 
-				$info = $this->get_data("SELECT * FROM bien_raiz;"); 
+                            case "porSucursal":     
+                                $sucursal = mysqli_real_escape_string($this->cn,$data['sucursal']);
+				$info = $this->get_data("SELECT * FROM bien_raiz where sucursal = '$sucursal';"); 
 			     break;
                             
                             case "one": 
