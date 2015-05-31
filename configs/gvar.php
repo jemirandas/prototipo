@@ -36,7 +36,7 @@ $gvar['m_correct_login']="usuario autentificado con éxito";
 $gvar['caso_uso12']="Pedir Cita";
 
 $gvar['caso_uso6']="crear empleado";
-$gvar['caso_uso8']['nombre']="modificar empleado";
+$gvar['caso_uso8']['nombre']="Modificar Empleado";
 
 $gvar['template_caso_uso6']="crear_empleado.tpl";
 $gvar['template_caso_uso8']="modificar_empleado.tpl";

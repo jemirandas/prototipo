@@ -1,43 +1,44 @@
- {literal}
-  <script>
-  $(function() {
-        var availableTags= [];
-        var nombre;
-        
-        {/literal}{section loop=$empleado name=i}{literal}
-             nombre = {/literal}"{$empleado[i]->get('nombre')}"{literal}.concat(" ");    
-             availableTags.push(nombre.concat({/literal}"{$empleado[i]->get('apellido')}"{literal})+" "+{/literal}"{$empleado[i]->get('cedula')}"{literal});
-        {/literal}{/section}{literal}
-        
-    $( "#busqueda" ).autocomplete({
-      source: availableTags
-    });
-  });
-  
-  </script>   
+
+{literal}
+    <script>
+      $(function() {
+            var availableTags= [];
+            var nombre;
+
+            {/literal}{section loop=$empleado name=i}{literal}
+                 nombre = {/literal}"{$empleado[i]->get('nombre')}"{literal}.concat(" ");    
+                 availableTags.push(nombre.concat({/literal}"{$empleado[i]->get('apellido')}"{literal})+" "+{/literal}"{$empleado[i]->get('cedula')}"{literal});
+            {/literal}{/section}{literal}
+
+        $( "#busqueda" ).autocomplete({
+          source: availableTags
+        });
+      });
+    </script>   
  {/literal}
- 
  
  
  
  {literal}
 <script> 
-  function modificar(divName){
+    
+    function modificar(divName){
 	  
-    var porNombre = document.getElementById("busqueda").value;
+        var porNombre = document.getElementById("busqueda").value;		
 	
-	
-	{/literal}{section loop=$empleado name=i}{literal}
+{/literal}
+
+{section loop=$empleado name=i}
+    {literal}
 	var nombre={/literal}"{$empleado[i]->get('nombre')}"{literal};
 	var apellido={/literal}"{$empleado[i]->get('apellido')}"{literal};
 	var cedula={/literal}"{$empleado[i]->get('cedula')}"{literal};
 	
-if (porNombre == nombre+" "+apellido+" "+cedula){
+        if (porNombre == nombre+" "+apellido+" "+cedula){
 		
-var pagina={/literal}"{$gvar.l_global}"{literal}+"modificar_empleado.php?option=mostrar&cedula="+{/literal}"{$empleado[i]->get('cedula')}"{literal};
-
-		location.href=pagina;
-		}
+            var pagina={/literal}"{$gvar.l_global}"{literal}+"modificar_empleado.php?option=mostrar&cedula="+{/literal}"{$empleado[i]->get('cedula')}"{literal};
+            location.href=pagina;
+        }
       
     {/literal}{/section}{literal} 
 	document.getElementById("busqueda").value="";        
@@ -52,12 +53,12 @@ var pagina={/literal}"{$gvar.l_global}"{literal}+"modificar_empleado.php?option=
       </div>
 	  
 	  
-	<h3>seleccione los empleados para eliminar</h3>	  
+	<h3>seleccione los empleados para modificar</h3>	  
 	<div class="rTable" id=dynamicInput>	  
 			<div class="rTableRow">
 				 <div class="rTableHead"><strong>Nombre</strong></div>
 				 <div class="rTableHead"><span style="font-weight: bold;">Apellidos</span></div>
-				 <div class="rTableHead"><span style="font-weight: bold;">Cedula</span></div>
+				 <div class="rTableHead"><span style="font-weight: bold;">C&eacutedula</span></div>
 			</div>
      </div>
 	 
@@ -74,7 +75,9 @@ var pagina={/literal}"{$gvar.l_global}"{literal}+"modificar_empleado.php?option=
 		</div>
 	              
     {/section}
-
-
-	<div align="center"><input class="btn btn-primary" type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'"></div>
-	
+ <br>
+ <br>
+<div align="center">
+    <input class="btn btn-primary" type="button" value="Regresar" onclick="location.href='inicioAdministrador.php'">
+</div>
+<br>

@@ -33,10 +33,9 @@
 	var apellido={/literal}"{$empleado[i]->get('apellido')}"{literal};
 	var cedula={/literal}"{$empleado[i]->get('cedula')}"{literal};
 	
-if (porNombre == nombre+" "+apellido+" "+cedula){
-		addAllInputs(divName, 'checkbox', nombre, apellido, cedula)
-
-		}
+        if (porNombre == nombre+" "+apellido+" "+cedula){
+        	addAllInputs(divName, 'checkbox', nombre, apellido, cedula)
+	}
 		
 		
       
@@ -92,15 +91,6 @@ function addAllInputs(divName, inputType, nombre, apellido, cedula){
 }
   </script>
     {/literal}
-
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 {literal}

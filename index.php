@@ -21,9 +21,6 @@ class c_index extends super_controller {
 		else if(is_empty($this->post->password)) {
 			throw_exception($this->gvar['m_password_empty']);
 		}
-
-
-		
 		
 		if(strcmp($this->post->tipo_de_usuario,"administrador")==0){
 		
@@ -47,7 +44,7 @@ class c_index extends super_controller {
 			$_SESSION['usuario']['cedula']=$this->usuario[0]->get('cedula');
 			$_SESSION['usuario']['type']="administrador";
 			$this->session=$_SESSION;
-		    $this->engine->assign('type_warning','success');
+                        $this->engine->assign('type_warning','success');
 			$this->engine->assign('msg_warning',$this->gvar['m_correct_login']);
 			$this->temp_aux = 'message.tpl';
 			}
@@ -107,10 +104,12 @@ class c_index extends super_controller {
 	   {
 		   
 		if($this->session['usuario']['type']=='empleado') {
+                        $this->engine->assign('title','Inicio de Empleado');
 			$this->temp='inicioEmpleado.tpl';
 		}
 		
 		else if ($this->session['usuario']['type']=='administrador'){
+                        $this->engine->assign('title','Inicio de Administrador');
 			$this->temp='inicioAdministrador.tpl';
 		}
 		else{
@@ -118,7 +117,7 @@ class c_index extends super_controller {
 
 		}
 		
-		$this->engine->assign('title','Inicio de Empleado');
+		
 		$this->engine->display('header.tpl');
 		$this->engine->display($this->temp_aux);		
 		$this->engine->display($this->temp);

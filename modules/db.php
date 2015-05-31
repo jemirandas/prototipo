@@ -202,14 +202,14 @@ class db
             switch($options['lvl2'])
             {
                     case "normal":
-						$dia = mysqli_real_escape_string($this->cn,$object->get('dia'));
-						$hora = mysqli_real_escape_string($this->cn,$object->get('hora'));
+                        $dia = mysqli_real_escape_string($this->cn,$object->get('dia'));
+                        $hora = mysqli_real_escape_string($this->cn,$object->get('hora'));
 
-						$empleado = mysqli_real_escape_string($this->cn,$object->get('empleado'));
-						$fecha = mysqli_real_escape_string($this->cn,$object->get('fecha'));
-						$disponibilidad = mysqli_real_escape_string($this->cn,$object->get('disponibilidad'));
-						$semana_de_agenda = mysqli_real_escape_string($this->cn,$object->get('semana_de_agenda'));
-						$this->do_operation("INSERT INTO agenda (dia, hora, empleado, fecha, disponibilidad, semana) VALUES ('$dia', '$hora','$empleado', '$fecha', '$disponibilidad', '$semana_de_agenda');");					
+                        $empleado = mysqli_real_escape_string($this->cn,$object->get('empleado'));
+                        $fecha = mysqli_real_escape_string($this->cn,$object->get('fecha'));
+                        $disponibilidad = mysqli_real_escape_string($this->cn,$object->get('disponibilidad'));
+                        $semana_de_agenda = mysqli_real_escape_string($this->cn,$object->get('semana_de_agenda'));
+                        $this->do_operation("INSERT INTO agenda (dia, hora, empleado, fecha, disponibilidad, semana) VALUES ('$dia', '$hora','$empleado', '$fecha', '$disponibilidad', '$semana_de_agenda');");					
 
                     break;
             }
@@ -245,6 +245,18 @@ class db
 						
                     break;
             }
+            break;
+        
+            case "sucursal":			
+                switch($options['lvl2'])
+                {
+                        case "normal":                              						
+                            $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
+                            $ciudad = mysqli_real_escape_string($this->cn,$object->get('ciudad'));
+                            $telefono = mysqli_real_escape_string($this->cn,$object->get('telefono'));                        
+                            $this->do_operation("INSERT INTO sucursal (direccion, ciudad, telefono) VALUES ('$direccion', '$ciudad', '$telefono');");
+                        break;
+                }
             break;
 			default: break;
 			
@@ -319,6 +331,21 @@ class db
                         break;
                     }
 
+                break;
+            
+             case "sucursal":                    
+                    switch($options['lvl2'])
+                    {
+                        case "normal":    
+                            //$auxiliars = $object->get('auxiliars');                                
+                            $ID = mysqli_real_escape_string($this->cn,$object->get('ID'));
+                            $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
+                            $ciudad = mysqli_real_escape_string($this->cn,$object->get('ciudad'));
+                            $telefono = mysqli_real_escape_string($this->cn,$object->get('telefono'));                            
+                            $this->do_operation("UPDATE sucursal SET direccion = '$direccion', ciudad = '$ciudad', telefono = '$telefono'". " WHERE ID = '$ID';");
+                            
+                        break;
+                    }
                 break;
             
             case "agenda":
@@ -535,17 +562,23 @@ class db
 			break;
 			
 			case "sucursal":
-			switch($option['lvl2'])
-			{
-                            case "all":                                 
-				$info = $this->get_data("SELECT * FROM sucursal;"); 
-			     break;
-                         
-                            case "one":                                 
-                                $id = mysqli_real_escape_string($this->cn,$data['ID']);
-                                $info = $this->get_data("SELECT * FROM sucursal where ID = '$id';"); 
-                            break;
-			}
+                            switch($option['lvl2'])
+                            {
+                                case "all":                                 
+                                    $info = $this->get_data("SELECT * FROM sucursal;"); 
+                                 break;
+
+                                case "one":                                 
+                                    $id = mysqli_real_escape_string($this->cn,$data['ID']);
+                                    $info = $this->get_data("SELECT * FROM sucursal where ID = '$id';"); 
+                                break;
+
+                                case "by_ciudad":                                 
+                                    $ciudad = mysqli_real_escape_string($this->cn,$data['ciudad']);
+                                    $info = $this->get_data("SELECT * FROM sucursal where ciudad = '$ciudad';"); 
+                                break;
+
+                            }
 			break;
                     
                         case "bien_raiz":

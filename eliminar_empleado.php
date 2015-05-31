@@ -8,17 +8,17 @@ class c_eliminar_empleado extends super_controller {
     {             
         if(!is_empty($_POST['empleados_a_eliminar'])){
 		foreach($_POST['empleados_a_eliminar'] as $empleados_a_eliminar){
-            $empleado = new empleado();
-            $empleado->set('cedula', $empleados_a_eliminar);
-            if(is_empty($empleado->get('cedula')))
-            {throw_exception("La cédula no existe");}
-		
-            $this->orm->connect();
-            $this->orm->delete_data("normal",$empleado);
-            $this->orm->close();
+                    $empleado = new empleado();
+                    $empleado->set('cedula', $empleados_a_eliminar);
+                    if(is_empty($empleado->get('cedula')))
+                    {throw_exception("La cédula no existe");}
+
+                    $this->orm->connect();
+                    $this->orm->delete_data("normal",$empleado);
+                    $this->orm->close();
         
-        };
-		}
+                };
+        }
 		        
         $this->type_warning = "success";
         $this->msg_warning = "Borrado exitoso";

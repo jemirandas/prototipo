@@ -8,7 +8,7 @@ var check=document.getElementsByTagName("input")[i];
 if(check.type=="checkbox"){
 
     if(check.checked){
-        var r=confirm("Esta seguro que desea salir");
+        var r=confirm("¿Seguro que desea salir de esta página sin guardar cambios?");
         if(r==true){
             location.href="inicioAdministrador.php";
             break;
