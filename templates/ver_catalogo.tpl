@@ -2,6 +2,7 @@
 <b>Zona de busqueda</br> 
 <b>Precio de venta entre</b>
 <select name="precioVenta">
+    <option value="none"> </option>
     <option value="barato">10000000-25000000</option>
     <option value="medio">25000000-40000000</option>
     <option value="caro">40000000-50000000</option>
@@ -9,6 +10,7 @@
 
 <b>Precio de alquiler entre</b>
 <select name="precioAlquiler">
+    <option value="none"> </option>
     <option value="barato">100000-250000</option>
     <option value="medio">250000-40000000</option>
     <option value="caro">400000-500000</option>
@@ -16,6 +18,7 @@
 
 <b>Area entre </b>
 <select name="area">
+    <option value="none"> </option>
     <option value="pequeño">50-150</option>
     <option value="mediano">150-300</option>
     <option value="grande">300-500</option>
