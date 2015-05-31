@@ -101,7 +101,7 @@
                     <b>Ingrese el correo electr&oacutenico:<font color="red">*</b>
                 </td>
                 <td>
-                    <input required type="text" name="correo_electronico" {if $form ne null} value="{$form->get('correo_electronico')}" {/if} />
+                    <input required type="email" name="correo_electronico" {if $form ne null} value="{$form->get('correo_electronico')}" {/if} />
                 </td>
             </tr>
             

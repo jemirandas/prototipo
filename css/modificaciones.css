@@ -58,83 +58,10 @@
 			  	 clear: both;
 			  	 height: 0;
 			}
-			
-			
-			
-			
-			
-
-      .rojo{
-        color: #ff0000;
-      }
-      .azul{/* OK, a bit contrived... */
-        color: #0000a0;
-      }						
-			
-			
-			
-			
-			
-
 	
 	
 	
 	
-	
-	
-	
-    .Bloque_formulario
-    {
-		display: block;
-		width: 100%;
-		
-	}
-    .Title
-    {
-        display: table-caption;
-        text-align: center;
-        font-weight: bold;
-        font-size: larger;
-    }
-    .Encabezado_formulario
-    {
- color: #323133;
- font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
-letter-spacing: -1px;
-text-decoration: none; 
-text-shadow: 1px 1px #fff, 0 0 #0e0e0e, 2px 3px 1px #e3e3e3; 
-text-transform: none; 
-word-spacing: -2px;
-		height: 30px;
-		line-height: 200%;
-
-    }
-    .Linea_formulario
-    {
-        display: table-row;
-    }
-    .Celda_formulario1
-    {
-		font-weight: bold;
-        text-align: left;
-		height: 17px;
-		overflow: hidden;
-		width: 65%;
-	
-        display: table-cell;
-
-    }
-    .Celda_formulario2
-    {
-	
-	
-		height: 17px;
-		overflow: hidden;
-		width: 35%;
-	
-        display: table-cell;
-
-    }	
 	
 	
 	

@@ -61,32 +61,32 @@
                     <br /><br />                    
                     
                     <b>Ingrese el nombre:<font color="red">*</font></b>
-                    <input required type="text" name="nombre" onchange="cambio(this.value)" {if $form ne null}  value="{$form->get('nombre')}" {/if} /><br />
+                    <input required type="text" name="nombre" onchange="cambio(this.value, this.name)" {if $form ne null}  value="{$form->get('nombre')}" {/if} /><br />
                     
                     <b>Ingrese el apellido:<font color="red">*</font></b>
-                    <input required type="text" name="apellido" onchange="cambio(this.value)" {if $form ne null} value="{$form->get('apellido')}" {/if} /><br />
+                    <input required type="text" name="apellido" onchange="cambio(this.value, this.name)" {if $form ne null} value="{$form->get('apellido')}" {/if} /><br />
             
                     <b>Ingrese la c&eacutedula:<font color="red">*</font></b>
                     <input required type="text" name="cedula" onchange="cambio(this.value, this.name)" {if $form ne null} value="{$form->get('cedula')}" {/if} /><br />
                     
                     <b>Ingrese el nombre de usuario:<font color="red">*</font></b> 
-                    <input required type="text" name="nombre_de_usuario" onchange="cambio(this.value)" {if $form ne null} value="{$form->get('nombre_de_usuario')}" {/if} /><br />         
+                    <input required type="text" name="nombre_de_usuario" onchange="cambio(this.value, this.name)" {if $form ne null} value="{$form->get('nombre_de_usuario')}" {/if} /><br />         
                     
-                    <b>Ingrese el password:<font color="red">*</font></b>
-                    <input type="password" name="password" onchange="cambio(this.value)" {if $form ne null} value="{$form->get('password')}" {/if} /><br />
+                    <b>Ingrese el password:</b>
+                    <input type="password" name="password" onchange="cambio(this.value, this.name)" {if $form ne null} value="{$form->get('password')}" {/if} /><br />
             
                     <b>Ingrese la direcci&oacuten<font color="red">*</font>:</b> 
-                    <input required type="text" name="direccion" onchange="cambio(this.value)" {if $form ne null} value="{$form->get('direccion')}" {/if} /><br />
+                    <input required type="text" name="direccion" onchange="cambio(this.value, this.name)" {if $form ne null} value="{$form->get('direccion')}" {/if} /><br />
             
                     <b>Ingrese el n&uacutemero de tel&eacutefono:<font color="red">*</font></b> 
-                    <input required type="text" name="telefono" onchange="cambio(this.value)" {if $form ne null} value="{$form->get('telefono')}" {/if} /><br />
+                    <input required type="text" name="telefono" onchange="cambio(this.value, this.name)" {if $form ne null} value="{$form->get('telefono')}" {/if} /><br />
                     
                     <b>Ingrese el correo electr&oacutenico:<font color="red">*</font></b>
-                    <input required type="text" name="correo_electronico" onchange="cambio(this.value)" {if $form ne null} value="{$form->get('correo_electronico')}" {/if} /><br />
+                    <input required type="email" name="correo_electronico" onchange="cambio(this.value, this.name)" {if $form ne null} value="{$form->get('correo_electronico')}" {/if} /><br />
 		
                     <b>Seleccione la sucursal:<font color="red">*</font></b>
                     
-                    <select name="sucursal" onchange="cambio(this.value)">
+                    <select name="sucursal" onchange="cambio(this.value, this.name)">
                         <option selected> </option>
 			
                         {section loop=$sucursal name=i}
@@ -108,4 +108,3 @@
     </table>
 </form>
 </div>
-</body>

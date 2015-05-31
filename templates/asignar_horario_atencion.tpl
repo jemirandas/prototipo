@@ -154,6 +154,7 @@
     <br/><br/>
         <input type="hidden" name="asignar" value="1" />
         <input class="btn btn-primary" type="submit" value="Asignar Horario" />
+        <input class="btn btn-primary" type="reset" value="Borrar Todo" onclick="cambio()" />
 	<input class="btn btn-primary" type="button" value="Regresar" onclick="regresar()" />	
         <br/><br/>
 </center>

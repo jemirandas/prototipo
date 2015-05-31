@@ -15,62 +15,55 @@ class c_modificar_empleado extends super_controller {
 
         $empleado = new empleado($this->post);
         
-		if(is_empty($empleado->get('nombre'))){
-			
-			$this->engine->assign('form',$empleado);
+        if(is_empty($empleado->get('nombre'))){
+            
+            $this->engine->assign('form',$empleado);
+            
             throw_exception("Debe ingresar un nombre");
 			
-		}else if(is_empty($empleado->get('apellido'))){
+        }else if(is_empty($empleado->get('apellido'))){
 			
-			$this->engine->assign('form',$empleado);
+            $this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar un apellido");
 			
-		}else if(is_empty($empleado->get('cedula'))){
+	}else if(is_empty($empleado->get('cedula'))){
 			
-			$this->engine->assign('form',$empleado);
+	$this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar una cédula");
 			
         }else if(!is_numeric($empleado->get('cedula'))){
-				$this->engine->assign('form',$empleado);
-	            throw_exception("Debe ingresar una cedula numerica");
+            $this->engine->assign('form',$empleado);
+	    throw_exception("Debe ingresar una cedula numerica");
 
-		}else if(is_empty($empleado->get('nombre_de_usuario'))){
-			
-			$this->engine->assign('form',$empleado);
+        }else if(is_empty($empleado->get('nombre_de_usuario'))){
+
+            $this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar un nombre de usuario");
-		}
-		// else if(is_empty($empleado->get('password'))){
-			
-			// $this->engine->assign('form',$empleado);
-            // throw_exception("Debe ingresar un password");
-			
-		// }
-		else if(is_empty($empleado->get('direccion'))){
-			
-			$this->engine->assign('form',$empleado);
+            
+        }else if(is_empty($empleado->get('direccion'))){
+            $this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar una dirección");
+            
+        }else if(is_empty($empleado->get('telefono'))){
 			
-		}else if(is_empty($empleado->get('telefono'))){
-			
-			$this->engine->assign('form',$empleado);
+            $this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar un número de teléfono");
 			
-		}else if(is_empty($empleado->get('correo_electronico'))){
+	}else if(is_empty($empleado->get('correo_electronico'))){
 			
-			$this->engine->assign('form',$empleado);
+            $this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar un correo electrónico");
 			
-		}else if (!filter_var($empleado->get('correo_electronico'), FILTER_VALIDATE_EMAIL)) {
-					        $this->type_warning = "mensaje";
-
-			$this->engine->assign('form',$empleado);
+	}else if (!filter_var($empleado->get('correo_electronico'), FILTER_VALIDATE_EMAIL)) {
+            
+            $this->type_warning = "mensaje";
+            $this->engine->assign('form',$empleado);
             throw_exception("Debe ingresar un correo electrónico válido");			
-		}
-		else if(is_empty($empleado->get('sucursal'))){
-			
-			$this->engine->assign('form',$empleado);
+            
+        }else if(is_empty($empleado->get('sucursal'))){
+            $this->engine->assign('form',$empleado);
             throw_exception("Debe seleccionar una sucursal");
-		}
+        }
 		
 		
         $cedula_vieja=$this->post->cedula_vieja;
@@ -108,11 +101,14 @@ class c_modificar_empleado extends super_controller {
 		$this->orm->connect();
 		$option['empleado']['lvl2'] = "one2" ;     
 		$cod['empleado']['cedula'] = $empleado->get('cedula');	
-                $this->orm->read_data(array("empleado"), $option, $cod); 
-                $temp = $this->orm->get_objects("empleado"); 
-		$this->orm->close(); 		
-                
+        $this->orm->read_data(array("empleado"), $option, $cod); 
+		$this->orm->close(); 
+		
+        $temp = $this->orm->get_objects("empleado"); 
         
+		
+			
+
  		 if(is_empty($temp[0])){
 			 $this->type_warning = "advertencia";			
              throw_exception( "No existe un empleado con esa cédula");
@@ -153,7 +149,7 @@ class c_modificar_empleado extends super_controller {
     
     public function run()
     {
-
+		$this->engine->assign('title',$this->gvar['caso_uso8']);
 
         try {
             if (isset($this->get->option)){

@@ -219,50 +219,34 @@ class db
             switch($options['lvl2'])
             {
                     case "normal":                              						
-						$fecha_inicio = mysqli_real_escape_string($this->cn,$object->get('fecha_inicio'));
-						$fecha_fin = mysqli_real_escape_string($this->cn,$object->get('fecha_fin'));
-						$this->do_operation("INSERT INTO semana_de_agenda (fecha_inicio, fecha_fin) VALUES ('$fecha_inicio', '$fecha_fin');");						
+		$fecha_inicio = mysqli_real_escape_string($this->cn,$object->get('fecha_inicio'));
+		$fecha_fin = mysqli_real_escape_string($this->cn,$object->get('fecha_fin'));
+		$this->do_operation("INSERT INTO semana_de_agenda (fecha_inicio, fecha_fin) VALUES ('$fecha_inicio', '$fecha_fin');");						
 						
                     break;
             }
             break;
-			
-			case "bien_raiz":
+            default: break;
+        
+        case "sucursal":			
             switch($options['lvl2'])
             {
                     case "normal":                              						
-						$numero_escritura = mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
-						$precio_venta = mysqli_real_escape_string($this->cn,$object->get('precio_venta'));
-						$precio_alquiler = mysqli_real_escape_string($this->cn,$object->get('precio_alquiler'));
-						$direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
-						$numero_habitaciones = mysqli_real_escape_string($this->cn,$object->get('numero_habitaciones'));
-						$numero_banos = mysqli_real_escape_string($this->cn,$object->get('numero_banos'));
-						$balcon = mysqli_real_escape_string($this->cn,$object->get('balcon'));
-						$observaciones = mysqli_real_escape_string($this->cn,$object->get('observaciones'));
-						$sucursal = mysqli_real_escape_string($this->cn,$object->get('sucursal'));
-						$area = mysqli_real_escape_string($this->cn,$object->get('area'));
-						$this->do_operation("INSERT INTO bien_raiz (numero_escritura, precio_venta, precio_alquiler, direccion,numero_habitaciones,numero_banos,balcon,observaciones,sucursal,area) VALUES ('$numero_escritura', '$precio_venta', '$precio_alquiler', '$direccion','$numero_habitaciones','$numero_banos','$balcon','$observaciones','$sucursal','$area') ;");						
-						
+                        $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
+                        $ciudad = mysqli_real_escape_string($this->cn,$object->get('ciudad'));
+                        $telefono = mysqli_real_escape_string($this->cn,$object->get('telefono'));                        
+                        $this->do_operation("INSERT INTO sucursal (direccion, ciudad, telefono) VALUES ('$direccion', '$ciudad', '$telefono');");
                     break;
             }
-            break;
+        break;
         
-            case "sucursal":			
-                switch($options['lvl2'])
-                {
-                        case "normal":                              						
-                            $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
-                            $ciudad = mysqli_real_escape_string($this->cn,$object->get('ciudad'));
-                            $telefono = mysqli_real_escape_string($this->cn,$object->get('telefono'));                        
-                            $this->do_operation("INSERT INTO sucursal (direccion, ciudad, telefono) VALUES ('$direccion', '$ciudad', '$telefono');");
-                        break;
-                }
-            break;
-			default: break;
+       
+        default: break;
 			
 			
 
-		}
+
+            }
 
 	}
 	
@@ -293,13 +277,22 @@ class db
                             $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));                                
                             $email = mysqli_real_escape_string($this->cn,$object->get('correo_electronico'));                                
                             $sucursal = mysqli_real_escape_string($this->cn,$object->get('sucursal'));                                
-                            $user = mysqli_real_escape_string($this->cn,$object->get('nombre_de_usuario'));
-                            //$password = mysqli_real_escape_string($this->cn,$object->get('password'));
-                            //$hasher = new PasswordHash(8, false);
-                            //$encriptada = $hasher->HashPassword($password);
+                            $user = mysqli_real_escape_string($this->cn,$object->get('nombre_de_usuario'));                            
+                            $password = mysqli_real_escape_string($this->cn,$object->get('password'));
+                            
+                            
+                            if(is_empty($password)){
+                                $this->do_operation("UPDATE persona SET cedula='$cedula', nombre='$nombre', apellido='$apellido', correo_electronico='$email', direccion='$direccion', telefono='$telefono' WHERE cedula = '$cedula_vieja';");
+                                $this->do_operation("UPDATE empleado SET nombre_de_usuario='$user', sucursal='$sucursal' WHERE cedula = '$cedula';");
+                            }else{
+                                $hasher = new PasswordHash(8, false);
+                                $encriptada = $hasher->HashPassword($password);                                
+                                unset($hasher);		
+                                $this->do_operation("UPDATE persona SET cedula='$cedula', nombre='$nombre', apellido='$apellido', correo_electronico='$email', direccion='$direccion', telefono='$telefono' WHERE cedula = '$cedula_vieja';");
+                                $this->do_operation("UPDATE empleado SET nombre_de_usuario='$user', password='$encriptada', sucursal='$sucursal' WHERE cedula = '$cedula';");
+                            }
 
-                            $this->do_operation("UPDATE persona SET cedula='$cedula', nombre='$nombre', apellido='$apellido', correo_electronico='$email', direccion='$direccion', telefono='$telefono' WHERE cedula = '$cedula_vieja';");
-                            $this->do_operation("UPDATE empleado SET nombre_de_usuario='$user', sucursal='$sucursal' WHERE cedula = '$cedula';");
+                            
 
                         break;
                     }
@@ -365,46 +358,26 @@ class db
                     }
 
                 break;
+            
+            case "sucursal":                    
+                    switch($options['lvl2'])
+                    {
+                        case "normal":    
+                            //$auxiliars = $object->get('auxiliars');                                
+                            $ID = mysqli_real_escape_string($this->cn,$object->get('ID'));
+                            $direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
+                            $ciudad = mysqli_real_escape_string($this->cn,$object->get('ciudad'));
+                            $telefono = mysqli_real_escape_string($this->cn,$object->get('telefono'));                            
 
-          			
-			
-			
-			
-			
-			case "bien_raiz":
-			switch($options['lvl2'])
-            {
-                    case "normal":
-						$auxiliars = $object->get('auxiliars');
-						$numero_escritura_viejo = mysqli_real_escape_string($this->cn,$auxiliars['numero_escritura_viejo']);
-						print_r2($numero_escritura_viejo);
-						$numero_escritura = mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
-						$precio_venta = mysqli_real_escape_string($this->cn,$object->get('precio_venta'));
-						$precio_alquiler = mysqli_real_escape_string($this->cn,$object->get('precio_alquiler'));
-						$direccion = mysqli_real_escape_string($this->cn,$object->get('direccion'));
-						$numero_habitaciones = mysqli_real_escape_string($this->cn,$object->get('numero_habitaciones'));
-						$numero_banos = mysqli_real_escape_string($this->cn,$object->get('numero_banos'));
-						$balcon = mysqli_real_escape_string($this->cn,$object->get('balcon'));
-						$observaciones = mysqli_real_escape_string($this->cn,$object->get('observaciones'));
-						$sucursal = mysqli_real_escape_string($this->cn,$object->get('sucursal'));
-						$area = mysqli_real_escape_string($this->cn,$object->get('area'));
-						
-						$this->do_operation("UPDATE bien_raiz SET numero_escritura= '$numero_escritura', precio_venta='$precio_venta', precio_alquiler='$precio_alquiler', direccion='$direccion',numero_habitaciones='$numero_habitaciones',numero_banos='$numero_banos',balcon='$balcon',observaciones='$observaciones',sucursal='$sucursal',area='$area'  WHERE numero_escritura = '$numero_escritura_viejo' ;");
-						
-												
-						//unset($hasher);		
-                    break;
+                            $this->do_operation("UPDATE sucursal SET direccion = '$direccion', ciudad = '$ciudad', telefono = '$telefono'"
+                                    . " WHERE ID = '$ID';");
+                            
+                        break;
+                    }
+                break;
+
+            default: break;
             }
-			break;
-			
-			
-			
-			
-			
-			
-			
-			default: break;
-		}
 	}
 	
 	//function for delete data from db
@@ -412,8 +385,7 @@ class db
 	{
 		switch($options['lvl1'])
 		{
-                    case "horario_de_atencion":
-			
+                        case "horario_de_atencion":			
                         switch($options['lvl2'])
 			{
                             case "by_empleado":
@@ -436,12 +408,21 @@ class db
                             $cedula=mysqli_real_escape_string($this->cn,$object->get('cedula'));
                             $this->do_operation("DELETE FROM horario_de_atencion WHERE (empleado = '$cedula');");
                             $this->do_operation("DELETE FROM empleado WHERE(cedula='$cedula' );");
-                            $this->do_operation("DELETE FROM persona WHERE(cedula='$cedula' );");
-								
-                     break;
+                            $this->do_operation("DELETE FROM persona WHERE(cedula='$cedula' );");								
+                             break;
 			}
 			break;
-
+                        
+                        case "sucursal":			
+                        switch($options['lvl2'])
+			{
+                            case "normal":
+                                $ID = mysqli_real_escape_string($this->cn,$object->get('ID'));						
+                                $this->do_operation("DELETE FROM sucursal WHERE (ID = '$ID');");
+                            break;	
+			}
+			break;
+                    
 			default: break;			  
 		}
 	}
@@ -543,7 +524,7 @@ class db
                                         $password=mysqli_real_escape_string($this->cn,$data['password']);					
                                         $result = $this->get_data("SELECT * FROM administrador WHERE nombre_de_usuario = '$nombre_de_usuario';");
 					$cedula=$result[0]->cedula;
-					$result = $this->get_data("SELECT persona.*, administrador.nombre_de_usuario, administrador.password FROM persona INNER JOIN administrador ON (administrador.cedula='$cedula') AND (persona.cedula='$cedula');");
+					$result = $this->get_data("SELECT persona.*, administrador.nombre_de_usuario, administrador.password FROM persona INNER JOIN administrador ON (administrador.cedula=$cedula) AND (persona.cedula='$cedula');");
 					
 					$stored_hash=$result[0]->password;
 					
@@ -562,6 +543,7 @@ class db
 			break;
 			
 			case "sucursal":
+
                             switch($option['lvl2'])
                             {
                                 case "all":                                 
@@ -579,7 +561,8 @@ class db
                                 break;
 
                             }
-			break;
+                            
+                        break;
                     
                         case "bien_raiz":
 			switch($option['lvl2'])
@@ -714,17 +697,6 @@ class db
 				}
 			break;
 			
-			case "bien_raiz":
-                switch($option['lvl2'])
-                {
-
-					case "one":	
-						$numero_escritura=mysqli_real_escape_string($this->cn,$data['numero_escritura']);             
-						$info=$this->get_data("SELECT * FROM bien_raiz WHERE numero_escritura='$numero_escritura';"); 
-                    break;
-					
-                }
-            break;
 			
 
 			

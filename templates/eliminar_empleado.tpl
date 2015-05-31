@@ -181,9 +181,5 @@ var inputs = document.getElementById("empleado_"+pos);
 <div align="center">
  <input class="btn btn-primary" type="submit" value="Eliminar" />
  <input class="btn btn-primary" type="button" value="Regresar" onclick="regresarEliminar();"/></div>
-
  
 </form>
-
-
-
