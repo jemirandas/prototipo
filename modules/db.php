@@ -559,7 +559,11 @@ class db
                             case "one": 
                                 $nro = mysqli_real_escape_string($this->cn,$data['numero_escritura']);
                                 $info = $this->get_data("SELECT * FROM bien_raiz where numero_escritura = '$nro';"); 
-			     break;
+			     break;  
+                         
+                 	    case "all": 
+                                $info = $this->get_data("SELECT * FROM bien_raiz;"); 
+			    break;                         
                          
 			}
 			break;

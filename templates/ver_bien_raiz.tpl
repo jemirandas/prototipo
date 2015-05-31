@@ -13,5 +13,8 @@
     {else} <b>Balcon:</b> Si posee<br />
     {/if}
     <b>observaciones:</b> {$bien_raiz->get("observaciones")}<br />
+    <b>Imagenes</b><br />
+    <img src="bienes_raices\casa1.jpg" width="280" height="210">
     </td></tr>
 </table>  
+    
