@@ -21,6 +21,23 @@
     <option value="grande">300-500</option>
 </select></br> 
 
+<b>Numero de habitaciones </b>
+<select name="habitaciones">
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+    <option value=5>5</option>    
+</select></br>
+
+<b>Numero de baños </b>
+<select name="banos">
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+</select></br>
+
 <b><input class="btn btn-primary" type="submit" value="Buscar" /></b></br>
 
 <table border="0" width="100%" cellpadding="0" cellspacing="1">
