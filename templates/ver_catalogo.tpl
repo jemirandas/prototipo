@@ -26,6 +26,7 @@
 
 <b>Numero de habitaciones </b>
 <select name="habitaciones">
+    <option value="none"> </option>    
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -35,6 +36,7 @@
 
 <b>Numero de baños </b>
 <select name="banos">
+    <option value="none"> </option>    
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -56,7 +58,7 @@
   <td>{$bien_raiz[i]->get("area")}</td>
   <td>{$bien_raiz[i]->get("numero_habitaciones")}</td>
   <td><a  href="{$gvar.l_global}ver_bien_raiz.php
-         ?escritura={$bien_raiz[i]->get("numero_escritura")}?sucursal={$bien_raiz[i]->get("sucursal")}&option=display">
+         ?escritura={$bien_raiz[i]->get("numero_escritura")}&?sucursal={$bien_raiz[i]->get("sucursal")}&option=display">
           ver mas</a></td>
 </tr>
 {/section}
