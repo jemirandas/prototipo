@@ -24,21 +24,24 @@ public function display(){
     foreach ($bien_raiz as $propiedad){
       //filtro por precio de venta y de alquiler  
       if (strcmp ($precioVenta , "barato" ) == 0){  
-        if((10000000<=(int)$propiedad->get('precio_venta') && ((int)$propiedad->get('precio_venta')<=25000000))){
-            echo $propiedad->get('precio_venta');
+        if( 10000000 <=  (int)$propiedad->get('precio_venta') && ((int)$propiedad->get('precio_venta') <= 25000000) ){            
             array_push($resultados, $propiedad);
         }
       }
      elseif (strcmp ($precioVenta , "medio" ) == 0){  
-        if((25000000<$propiedad->get('precio_venta') && $propiedad->get('precio_venta'))<=40000000){
+         
+        if((25000000 < $propiedad->get('precio_venta') && $propiedad->get('precio_venta')) <= 40000000){
+            echo "hola2".$propiedad->get('precio_venta');
             array_push($resultados, $propiedad);
         }
       }  
       elseif (strcmp ($precioVenta , "caro" ) == 0){  
         if((40000000<$propiedad->get('precio_venta') && $propiedad->get('precio_venta'))<=50000000){
+            echo "hola3".$propiedad->get('precio_venta');
             array_push($resultados, $propiedad);
         }
       }  
+      
       elseif (strcmp ($precioAlquiler , "barato" ) == 0){  
         if((100000<=$propiedad->get('precio_alquiler') && $propiedad->get('precio_precio alquiler'))<=250000){
             array_push($resultados, $propiedad);
@@ -93,7 +96,7 @@ public function display(){
     else{
         $this->engine->assign('bien_raiz',$resultados);
         $this->engine->assign('title','Informacion del bien raiz');
-        $this->engine->display('header.tpl');
+        $this->engine->display('header2.tpl');
         $this->engine->display('buscar_bien_raiz.tpl');
         $this->engine->display('footer.tpl');        
     }

@@ -18,7 +18,7 @@ public function display(){
     $this->engine->assign('bien_raiz',$bien_raiz);
     $this->engine->assign('title','Bienes raices');
         
-    $this->engine->display('header.tpl');
+    $this->engine->display('header2.tpl');
     $this->engine->display('ver_catalogo.tpl');
     $this->engine->display('footer.tpl');
 }
