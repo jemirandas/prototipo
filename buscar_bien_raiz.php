@@ -9,26 +9,25 @@ public function display(){
     $precioVenta=$_POST['precioVenta'];
     $precioAlquiler=$_POST['precioAlquiler'];
     $area=$_POST['area'];
-    echo $precioVenta;
-    echo $precioAlquiler;
-    echo $area;
 
     $cod['bien_raiz']['sucursal']=$sucursal;
     $options['bien_raiz']['lvl2']="porSucursal";
     $this->orm->connect();
     $this->orm->read_data(array("bien_raiz"), $options, $cod);
     $bien_raiz=$this->orm->get_objects("bien_raiz");
-    //print_r2($bien_raiz);
+    print_r2($bien_raiz);
     $this->orm->close();
     
-    foreach ($bien_raiz as $propiedad){
+    
+     foreach ($bien_raiz as $propiedad){
       //filtro por precio de venta y de alquiler  
       if (strcmp ($precioVenta , "barato" ) == 0){  
-        if((10000000<=$propiedad->get('precio_venta') && ($propiedad->get('precio_venta')<=250000))){
+        if((10000000<=$propiedad->get('precio_venta') && ($propiedad->get('precio_venta')<=25000000))){
+            echo $propiedad->get('precio_venta');
             array_push($resultados, $propiedad);
         }
       }
-      elseif (strcmp ($precioVenta , "medio" ) == 0){  
+     /*elseif (strcmp ($precioVenta , "medio" ) == 0){  
         if((25000000<$propiedad->get('precio_venta') && $propiedad->get('precio_venta'))<=40000000){
             array_push($resultados, $propiedad);
         }
@@ -68,7 +67,7 @@ public function display(){
         if((300<$propiedad->get('area') && $propiedad->get('area'))<=500){
             array_push($resultados, $propiedad);
         }
-      }
+      }*/
       //filtro por numero de habitaciones
       
       
