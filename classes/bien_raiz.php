@@ -2,8 +2,6 @@
  
 class bien_raiz extends object_standard
 {
-
-
 	protected $numero_escritura;
 	protected $precio_venta;
 	protected $precio_alquiler;
@@ -14,7 +12,8 @@ class bien_raiz extends object_standard
 	protected $observaciones;
 	protected $sucursal;
 	protected $area;
-	//components
+	
+        //components
 	var $components = array();
 	
 	//auxiliars for primary key and for files
@@ -33,19 +32,18 @@ class bien_raiz extends object_standard
 	}
 	
     public function relational_keys($class, $rel_name){
-        switch($class){
-		
-		
-			case "sucursal":
-			switch($rel_name)
-			{
-				case "b_s":
-				return array("sucursal");
-				break;
-			}
-			
-			break;
-            default: break;
-            }
+        switch($class){		
+            case "sucursal":
+                switch($rel_name)
+                {
+                    case "b_s":
+                       return array("sucursal");
+                    break;
+               }
+            break;
+        
+            default:
+                break;
+        }
     }
 }

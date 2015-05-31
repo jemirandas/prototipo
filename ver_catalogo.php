@@ -8,9 +8,11 @@ public function display(){
     $cod['bien_raiz']['sucursal']=$IDsucursal;
     $options['bien_raiz']['lvl2']="porSucursal";
     $this->orm->connect();
+
     $this->orm->read_data(array("bien_raiz"), $options, $cod);
     $bien_raiz=$this->orm->get_objects("bien_raiz");
     //print_r2($bien_raiz);
+
     $this->orm->close();
     
     $this->engine->assign('bien_raiz',$bien_raiz);

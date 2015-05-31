@@ -27,7 +27,7 @@ public function display(){
             array_push($resultados, $propiedad);
         }
       }
-     /*elseif (strcmp ($precioVenta , "medio" ) == 0){  
+     elseif (strcmp ($precioVenta , "medio" ) == 0){  
         if((25000000<$propiedad->get('precio_venta') && $propiedad->get('precio_venta'))<=40000000){
             array_push($resultados, $propiedad);
         }
@@ -67,7 +67,7 @@ public function display(){
         if((300<$propiedad->get('area') && $propiedad->get('area'))<=500){
             array_push($resultados, $propiedad);
         }
-      }*/
+      }
       //filtro por numero de habitaciones
       
       
