@@ -17,4 +17,6 @@
     <img src="bienes_raices\casa1.jpg" width="280" height="210">
     </td></tr>
 </table>  
+
+    <input type="button" onclick="history.back()" name="volver atrás" value="Regresar">
     

@@ -3,16 +3,15 @@ require('configs/include.php');
 class c_busqueda_avanzada extends super_controller{
     
 public function display(){
-    print_r2($_POST);
+ 
     $sucursal=$_POST['sucursal'];
-    echo $sucursal;
 
     $cod['bien_raiz']['sucursal']=$sucursal;
     $options['bien_raiz']['lvl2']="porSucursal";
     $this->orm->connect();
     $this->orm->read_data(array("bien_raiz"), $options, $cod);
     $bien_raiz=$this->orm->get_objects("bien_raiz");
-    print_r2($bien_raiz);
+    //print_r2($bien_raiz);
     $this->orm->close();
     
     $this->engine->assign('bien_raiz',$bien_raiz);

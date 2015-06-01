@@ -1,4 +1,5 @@
 <form action="{$gvar.l_global}busqueda_avanzada.php?sucursal={$bien_raiz[0]->get("sucursal")}&option=display" method="post">
+<input type="hidden" name="sucursal" value={$bien_raiz[0]->get("sucursal")}/>
 <b>Clic en el siguiente boton para realizar una busqueda avanzada</br> 
 
     <b><input class="btn btn-primary" type="submit" value="Buscar" /></b></br>
@@ -21,4 +22,5 @@
 </tr>
 {/section}
 </table>
+ <input type="button" onclick="history.back()" name="volver atrás" value="Regresar">
 </form> 
