@@ -84,7 +84,7 @@ public function display(){
 
     }
     
-    print_r2($resultados);
+    //print_r2($resultados);
     if(count($resultados)==0){
         echo "No hay resultados";
     }
@@ -92,16 +92,18 @@ public function display(){
     elseif(count($resultados)==1){
         $this->engine->assign('bien_raiz',$resultados[0]);
         $this->engine->assign('title','Informacion del bien raiz');
-        $this->engine->display('header.tpl');
-        $this->engine->display('ver_bien_raiz.tpl');
+        $this->engine->display('header2.tpl');
+        $this->engine->display('buscar_bien_raiz.tpl');
         $this->engine->display('footer.tpl');
     }
     else{
         $this->engine->assign('bien_raiz',$resultados);
         $this->engine->assign('title','Informacion del bien raiz');
+        
         $this->engine->display('header2.tpl');
         $this->engine->display('buscar_bien_raiz.tpl');
-        $this->engine->display('footer.tpl');        
+        $this->engine->display('footer.tpl');
+        
     }
 
 }

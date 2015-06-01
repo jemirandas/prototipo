@@ -12,7 +12,7 @@ public function display(){
     $this->engine->assign('sucursal',$sucursal);
     $this->engine->assign('title','Bienvenido al catalogo');
         
-    $this->engine->display('header.tpl');
+    $this->engine->display('header2.tpl');
     $this->engine->display('ver_sucursales.tpl');
     $this->engine->display('footer.tpl');
 }

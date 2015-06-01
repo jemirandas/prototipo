@@ -16,7 +16,7 @@ public function display(){
     $this->engine->assign('bien_raiz',$bien_raiz[0]);
     $this->engine->assign('title','Informacion del bien raiz');
         
-    $this->engine->display('header.tpl');
+    $this->engine->display('header2.tpl');
     $this->engine->display('ver_bien_raiz.tpl');
     $this->engine->display('footer.tpl');
 }

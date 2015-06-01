@@ -18,5 +18,7 @@
     </td></tr>
 </table>  
 
-    <input type="button" onclick="history.back()" name="volver atrás" value="Regresar">
+    <input type="button" onclick="window.history.go(-2)" name="volver atrás" value="Regresar">
+    <b><a  href="{$gvar.l_global}pedir_cita.php?option=horario&semana=actual
+       &sucursal={$bien_raiz->get("sucursal")}&bien_raiz={$bien_raiz->get("numero_escritura")}">Pedir cita</a>   
     

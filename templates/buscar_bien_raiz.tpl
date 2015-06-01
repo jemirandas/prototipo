@@ -15,7 +15,12 @@
     <b>observaciones:</b> {$bien_raiz[i]->get("observaciones")}<br />
     <b>Imagenes</b><br />
     <img src="bienes_raices\casa1.jpg" width="280" height="210">
-    </td></tr>
+    <h4><b><a  href="{$gvar.l_global}ver_bien_raiz.php
+            ?escritura={$bien_raiz[i]->get("numero_escritura")}
+            &?sucursal={$bien_raiz[i]->get("sucursal")}&option=display">ver mas</a></br>     
+        </td></tr></h4>
 {/section}
 </table>  
+    <input type="button" onclick="history.go(-2)" name="volver atrás" value="Regresar">
+ 
     
