@@ -43,6 +43,6 @@
     <option value=4>4</option>
 </select></br>
 
-<b><input class="btn btn-primary" type="submit" value="Buscar" /></b></br>
+<b><input class="btn btn-primary" type="submit" value="Buscar" /></b>
 <input type="button" onclick="history.back()" name="volver atrás" value="Regresar">
 </form>
