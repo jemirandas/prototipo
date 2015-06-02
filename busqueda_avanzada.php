@@ -3,9 +3,8 @@ require('configs/include.php');
 class c_busqueda_avanzada extends super_controller{
     
 public function display(){
- 
-    $sucursal=$_POST['sucursal'];
-
+     
+    $sucursal=$this->post->sucursal;
     $cod['bien_raiz']['sucursal']=$sucursal;
     $options['bien_raiz']['lvl2']="porSucursal";
     $this->orm->connect();

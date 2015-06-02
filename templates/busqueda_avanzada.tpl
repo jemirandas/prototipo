@@ -1,4 +1,4 @@
-<form action="{$gvar.l_global}buscar_bien_raiz.php?sucursal={$bien_raiz[0]->get("sucursal")}&option=display" method="post">
+<form action="{$gvar.l_global}buscar_bien_raiz.php?sucursal={$bien_raiz[0]->get("sucursal")}&option=buscar" method="post">
 <b>Zona de busqueda</br> 
 <b>Precio de venta entre</b>
 <select name="precioVenta">
