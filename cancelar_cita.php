@@ -7,6 +7,7 @@ class c_cancelar_cita extends super_controller {
 	public function display()
 	{
 		$this->engine->assign('title',$this->gvar['n_cancelar_cita']);
+		$this->engine->assign('sucursal',$this->get->sucursal);
 		$this->engine->display('header2.tpl');
 		$this->engine->display($this->temp_aux);
 		
