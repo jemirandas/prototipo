@@ -17,11 +17,14 @@
     Señor usuario conserve el c&oacutedigo de la cita para porderla cancelar<br>   
 </h5>
 <br/><br/><br/>
-    <center><input class="btn btn-primary" type="button" value="Aceptar"
-           onclick="location.href='{$gvar.l_global}index.php'">
+    <center><input class="btn btn-primary" type="button" value="Volver al Catálogo"
+           onclick="location.href='{$gvar.l_global}ver_catalogo.php?option=display&id={$empleado->get('sucursal')}'">
     </center>
+           <br/><br/>
 {else}
+    <br/><br/>
     <center><input class="btn btn-primary" type="button" value="Regresar" name="pedir_cita" 
            onclick="javascript:window.history.back();">
     </center>
+    <br/><br/>
 {/if}

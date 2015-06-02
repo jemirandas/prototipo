@@ -57,8 +57,8 @@
 			<div  class="Celda_formulario1" >¿El bien raiz tiene balcon?</div>
 			 <div class="Celda_formulario2">
 				<select name="balcon">
-					<option value="no">false</option>
-					<option value="si">true</option>			  
+					<option value="no">No</option>
+					<option value="si">Si</option>			  
 				</select> 
 			</div> 			
 		</div> 

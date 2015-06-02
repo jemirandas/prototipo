@@ -3,18 +3,20 @@
 class bien_raiz extends object_standard
 {
 	//attributes
+
 	protected $numero_escritura;
 	protected $precio_venta;
 	protected $precio_alquiler;
-	protected $direccion;	
-	protected $numero_habitaciones;		
-        protected $numero_banos;	
-        protected $balcon;	
-        protected $area;	
-        protected $obervaciones;	
-        protected $sucursal;	
+	protected $direccion;
+	protected $numero_habitaciones;
+	protected $numero_banos;
+	protected $balcon;
+	protected $observaciones;
+	protected $sucursal;
+	protected $area;
 	
-	//components
+        //components
+
 	var $components = array();
 	
 	//auxiliars for primary key and for files
@@ -50,4 +52,5 @@ class bien_raiz extends object_standard
                 default: break; 		
             } 
 	}        
+
 }

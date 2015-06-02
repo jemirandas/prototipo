@@ -24,6 +24,13 @@ define('C_DB_SERVER', 'sql3.freesqldatabase.com'); //DB server
 define('C_DB_USER', 'sql378935'); //DB user
 define('C_DB_PASS', 'jR8%tV6!'); //DB password
 define('C_DB_DATABASE_NAME', 'sql378935'); //DB database name
+
+
+// define('C_DB_SERVER', 'localhost'); //DB server
+// define('C_DB_USER', 'root'); //DB user
+// define('C_DB_PASS', ''); //DB password
+// define('C_DB_DATABASE_NAME', 'sql378935'); //DB database name
+
 define('C_DB_LIMIT', 10); //DB limit of elements by page
 
 require(C_FULL_PATH."modules/super_controller.php"); //Super Controller

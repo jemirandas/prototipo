@@ -2,8 +2,8 @@
 
     <BODY>
 		<b>Inicio de Empleado</b><br /><br />
-		<input class="btn btn-primary" type="button" value="Crear Bien Raíz" name="crear_empleado" onclick="location.href='crear_empleado.php'">
-		<input class="btn btn-primary" type="button" value="Modificar Bien Raíz" name="modificar_empleado" onclick="location.href='modificar_emplado.php'">
-		<input class="btn btn-primary" type="button" value="Eliminar Bien Raíz" name="eliminar_empleado" onclick="location.href='eliminar_empleado.php'">
+		<input class="btn btn-primary" type="button" value="Crear Bien Raíz" name="crear_bien_raiz" onclick="location.href='crear_bien_raiz.php'">
+		<input class="btn btn-primary" type="button" value="Modificar Bien Raíz" name="modificar__bien_raiz" onclick="location.href='modificar_bien_raiz.php'">
+		<input class="btn btn-primary" type="button" value="Eliminar Bien Raíz" name="eliminar_bien_raiz" onclick="location.href='eliminar_bien raiz.php'">
     </BODY>
 </HTML>

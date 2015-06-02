@@ -120,7 +120,7 @@ class c_modificar_bien_raiz extends super_controller {
 
     public function display()
     {
-		if ($_SESSION['usuario']['type']=='administrador'){
+		if ($_SESSION['usuario']['type']=='empleado'){
 			
 			$this->orm->connect();
 			$option['sucursal']['lvl2'] = "all" ;     		
