@@ -31,6 +31,7 @@ define('C_DB_DATABASE_NAME', 'sql378935'); //DB database name
 // define('C_DB_PASS', ''); //DB password
 // define('C_DB_DATABASE_NAME', 'sql378935'); //DB database name
 
+
 define('C_DB_LIMIT', 10); //DB limit of elements by page
 
 require(C_FULL_PATH."modules/super_controller.php"); //Super Controller

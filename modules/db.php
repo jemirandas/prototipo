@@ -256,21 +256,33 @@ class db
                         $area = mysqli_real_escape_string($this->cn,$object->get('area'));
                         $this->do_operation("INSERT INTO bien_raiz (numero_escritura, precio_venta, precio_alquiler, direccion,numero_habitaciones,numero_banos,balcon,observaciones,sucursal,area) VALUES ('$numero_escritura', '$precio_venta', '$precio_alquiler', '$direccion','$numero_habitaciones','$numero_banos','$balcon','$observaciones','$sucursal','$area') ;");						
                      break;
+            }      
+            break;
+			
+            case "imagen":
+            switch($options['lvl2'])
+            {
+                    case "normal":                              						
+                        $bien_raiz = mysqli_real_escape_string($this->cn,$object->get('bien_raiz'));
+                        $ruta = mysqli_real_escape_string($this->cn,$object->get('ruta'));
+                        $this->do_operation("INSERT INTO imagen (bien_raiz, ruta) VALUES ('$bien_raiz', '$ruta') ;");
 
-        
-       
+						
+                    break;
+            }
+            break;
+			
+			
+			default: break;
 			
 			
 
 
             }
-            break;
             
-         default: break;
 
 
 	}
-    }
 	
 	//function for edit data from db
 	public function update($options,$object) 
