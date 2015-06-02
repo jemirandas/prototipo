@@ -244,7 +244,7 @@ class c_conciliar_cita extends super_controller {
 
     public function display()
     {   
-        $this->engine->display('header.tpl');
+        $this->engine->display('header2.tpl');
         $this->engine->display($this->temp_aux);
         $this->engine->display('info_cita.tpl');
         $this->engine->display('footer.tpl');

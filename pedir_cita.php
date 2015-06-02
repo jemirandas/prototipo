@@ -7,7 +7,7 @@ class pedir_cita extends super_controller{
                 
 		if (isset($this->get->seleccion)){
                     
-                        $this->engine->display('header.tpl');
+                        $this->engine->display('header2.tpl');
 			$seleccion = $this->get->seleccion;
 			$horario = explode(":", $seleccion);
 			//echo "Usted seleccionó: día=$fecha[0], hora=$fecha[1], semana=".$this->get->semana;
@@ -46,6 +46,7 @@ class pedir_cita extends super_controller{
                             $this->engine->assign('fecha', $agenda[0]->get('fecha'));
                             $this->engine->assign('hora', $agenda[0]->get('hora'));
                             $this->engine->assign('empleado', $agenda[0]->get('empleado'));                                                                                    
+                            $this->engine->assign('sucursal', $agenda[0]->get('empleado'));
                             $this->engine->assign('bien_raiz', $this->get->bien_raiz);
                             $this->engine->display($this->temp_aux);
                             $this->engine->display('formulario_cita.tpl');						                            
@@ -112,7 +113,7 @@ class pedir_cita extends super_controller{
 
             }else{
 
-                $this->engine->display('header.tpl');
+                $this->engine->display('header2.tpl');
                 $this->engine->display($this->temp_aux);														
                 $this->engine->assign('title','Pedir Cita');
                 $this->engine->display('pedir_cita.tpl');										
@@ -122,7 +123,7 @@ class pedir_cita extends super_controller{
             }					
 				
                 $this->engine->assign('title','Pedir Cita');			
-                $this->engine->display('header.tpl');				
+                $this->engine->display('header2.tpl');				
                 $this->engine->display('pedir_cita.tpl');										
 	}	
 	

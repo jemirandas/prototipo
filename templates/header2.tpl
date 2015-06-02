@@ -47,8 +47,9 @@
 <!-- Begin Content -->
 
 	<tr>
+            
 		
-		<td align="left" valign="top" width="600px" background="images/fondo.jpg">
+            <td colspan="2" align="left" valign="top" width="600px" background="images/fondo.jpg">
 
 
 

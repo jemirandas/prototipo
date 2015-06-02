@@ -105,7 +105,7 @@
                     <input class="btn btn-primary" type="submit" value="Enviar" />
                  </td>
                 <td align="left">   
-                    <input class="btn btn-primary" type="button" value="Regresar" onclick="regresarCrear()">	
+                    <input class="btn btn-primary" type="button" value="Volver a Horario" onclick="window.history.go(-1)">	
 
                 </td>
             </tr>
