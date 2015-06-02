@@ -12,6 +12,9 @@ class c_insert extends super_controller {
     
     public function add()
     {
+		print_r2($this->post);
+		print_r2($_FILES);
+
         $bien_raiz = new bien_raiz($this->post);
 
 		if(is_empty($bien_raiz->get('numero_escritura'))){
@@ -83,6 +86,50 @@ class c_insert extends super_controller {
         $this->temp_aux = 'message.tpl';
         $this->engine->assign('type_warning',$this->type_warning);
         $this->engine->assign('msg_warning',$this->msg_warning);
+		
+		
+	
+		$uploadedfileload="true";
+		$uploadedfile_size=$_FILES['uploadedfile'][size];
+		echo $_FILES[uploadedfile][name];
+		if ($_FILES[uploadedfile][size]>2000000000)
+		{$msg=$msg."El archivo es mayor que 200KB, debes reduzcirlo antes de subirlo<BR>";
+		$uploadedfileload="false";}
+
+		// if (!($_FILES[uploadedfile][type] =="image/pjpeg" OR $_FILES[uploadedfile][type] =="image/gif"))
+		// {$msg=$msg." Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
+		// $uploadedfileload="false";}
+
+		$file_name=$_FILES[uploadedfile][name];
+		$add="bienes_raices/$file_name";
+
+		if($uploadedfileload=="true"){
+
+		if(move_uploaded_file ($_FILES[uploadedfile][tmp_name], $add)){
+		
+		$imagen=new imagen();
+		$imagen->set('ruta',$add);
+		$imagen->set('bien_raiz',$bien_raiz->get('numero_escritura'));
+		print_r2($imagen);
+		
+
+		
+		$this->orm->connect();
+		
+        $this->orm->insert_data("normal", $imagen);
+		$this->orm->close();
+		
+		
+		
+		
+		echo " Ha sido subido satisfactoriamente";
+		}else{echo "Error al subir el archivo";}
+
+		}else{echo $msg;}
+		
+		
+		
+		
 
     
 	}   

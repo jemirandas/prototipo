@@ -1,4 +1,4 @@
-<form name="crear_bien_raiz" action="{$gvar.l_global}crear_bien_raiz.php?option=add" method="post">
+<form name="crear_bien_raiz" action="{$gvar.l_global}crear_bien_raiz.php?option=add" method="post" enctype="multipart/form-data">
 		
 		
     <div class="Bloque_formulario" align="center">
@@ -77,14 +77,26 @@
 				</select>
 				</div>
 			
-		</div>		
+		</div>	
+
+		<div class="Linea_formulario"> 
+			<div class="Celda_formulario1" ><input name="uploadedfile" type="file" /></div>
+		</div>
+	
+
+
+
+
+		
 				
 		<div colspan="2">
 			<input class="btn btn-primary" type="submit" value="Crear" />
 			<input class="btn btn-primary" type="button" value="Regresar" onclick="regresarCrear()">	
 
 		</div>
+		
 	</div>
+	
 </form>
 
 
