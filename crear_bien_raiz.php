@@ -8,12 +8,12 @@
 
 require('configs/include.php');
 
-class c_insert extends super_controller {
+class c_crear_bien_raiz extends super_controller {
     
     public function add()
     {
-		print_r2($this->post);
-		print_r2($_FILES);
+		//print_r2($this->post);
+		//print_r2($_FILES);
 
         $bien_raiz = new bien_raiz($this->post);
 
@@ -64,14 +64,14 @@ class c_insert extends super_controller {
 	            throw_exception("Debe ingresar una precio_venta numerico");
 
 		}
-		print_r2($bien_raiz);
+		//print_r2($bien_raiz);
 		
         $this->orm->connect();
 		$option['bien_raiz']['lvl2'] = "one" ;     
 		$cod['bien_raiz']['numero_escritura'] = $bien_raiz->get('numero_escritura');	
         $this->orm->read_data(array("bien_raiz"), $option, $cod);        
         $temp = $this->orm->get_objects("bien_raiz");
-		print_r2($temp[0]);
+		//print_r2($temp[0]);
 
         
  		if(!is_empty($temp[0])){
@@ -90,31 +90,29 @@ class c_insert extends super_controller {
         $this->engine->assign('type_warning',$this->type_warning);
         $this->engine->assign('msg_warning',$this->msg_warning);
 		
-		
 	
+	foreach($_FILES as $uploaded_file){
 		$uploadedfileload="true";
-		$uploadedfile_size=$_FILES['uploadedfile'][size];
-		echo $_FILES[uploadedfile][name];
-		if ($_FILES[uploadedfile][size]>2000000000)
+		$uploadedfile_size=$uploaded_file[size];
+		echo $uploaded_file[name];
+		if ($uploaded_file[size]>2000000000)
 		{$msg=$msg."El archivo es mayor que 200KB, debes reduzcirlo antes de subirlo<BR>";
 		$uploadedfileload="false";}
 
-		// if (!($_FILES[uploadedfile][type] =="image/pjpeg" OR $_FILES[uploadedfile][type] =="image/gif"))
+		// if (!($uploaded_file[type] =="image/pjpeg" OR $uploaded_file[type] =="image/gif"))
 		// {$msg=$msg." Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
 		// $uploadedfileload="false";}
 
-		$file_name=$_FILES[uploadedfile][name];
+		$file_name=$uploaded_file[name];
 		$add="bienes_raices/$file_name";
 
 		if($uploadedfileload=="true"){
 
-		if(move_uploaded_file ($_FILES[uploadedfile][tmp_name], $add)){
+		if(move_uploaded_file ($uploaded_file[tmp_name], $add)){
 		
 		$imagen=new imagen();
 		$imagen->set('ruta',$add);
-		$imagen->set('bien_raiz',$bien_raiz->get('numero_escritura'));
-		print_r2($imagen);
-		
+		$imagen->set('bien_raiz',$bien_raiz->get('numero_escritura'));		
 
 		
 		$this->orm->connect();
@@ -122,13 +120,12 @@ class c_insert extends super_controller {
         $this->orm->insert_data("normal", $imagen);
 		$this->orm->close();
 		
-		
-		
-		
-		echo " Ha sido subido satisfactoriamente";
-		}else{echo "Error al subir el archivo";}
+		}else{
+		//echo "Error al subir el archivo";}
 
-		}else{echo $msg;}
+		}
+		}
+		}
 		
 		
 		
@@ -153,7 +150,7 @@ class c_insert extends super_controller {
 			$this->engine->display('header.tpl');
 			$this->engine->display($this->temp_aux);
 			$this->engine->display($this->gvar['caso_uso1']['template']);
-			$this->engine->assign('title',$this->gvar['caso_uso1']['nombre']);
+			$this->engine->assign('title',"crear bien raiz");
 
 			$this->engine->display('footer.tpl');
 		}
@@ -185,7 +182,7 @@ class c_insert extends super_controller {
     }
 }
 
-$call = new c_insert();
+$call = new c_crear_bien_raiz();
 $call->run();
 
 

@@ -133,7 +133,7 @@ class c_modificar_bien_raiz extends super_controller {
 			$this->engine->assign('sucursal',$tempo);
 			$this->engine->display('header.tpl');
 			$this->engine->display($this->temp_aux);
-			$this->engine->assign('title',$this->gvar['caso_uso2']['nombre']);
+			$this->engine->assign('title',modificar bien raiz);
 			$this->engine->display($this->gvar['caso_uso2']['template']);
 			$this->engine->display('footer.tpl');
 		}
