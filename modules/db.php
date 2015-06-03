@@ -389,6 +389,17 @@ class db
                                     . "fecha = '$fecha' AND hora = '$hora' AND empleado = '$empleado';");
                             
                         break;
+                        
+                        case "cancelar":
+                        	//$auxiliars = $object->get('auxiliars');
+                        	$fecha = mysqli_real_escape_string($this->cn,$object->get('fecha'));
+                        	$hora = mysqli_real_escape_string($this->cn,$object->get('hora'));
+                        	$empleado = mysqli_real_escape_string($this->cn,$object->get('empleado'));
+                        
+                        	$this->do_operation("UPDATE agenda SET disponibilidad = 1 WHERE "
+                        			. "fecha = '$fecha' AND hora = '$hora' AND empleado = '$empleado';");
+                        
+                        	break;
                     }
 
                 break;
@@ -447,6 +458,7 @@ class db
 	//function for delete data from db
 	public function delete($options, $object)
 	{
+		
 		switch($options['lvl1'])
 		{
                         case "horario_de_atencion":			
@@ -464,9 +476,9 @@ class db
 			case "empleado":                                                    
 			switch($options['lvl2'])
 			{
-                            case "all" :					
-                            $info=$this->get_data("SELECT * FROM empleado;"); 
-                            break;
+                            //case "all" :					
+                            //$info=$this->get_data("SELECT * FROM empleado;"); 
+                            //break;
 
                             case "normal" :	
                             $cedula=mysqli_real_escape_string($this->cn,$object->get('cedula'));
@@ -486,7 +498,31 @@ class db
                             break;	
 			}
 			break;
-                    
+			
+			
+			case "cita":
+				
+				switch($options['lvl2'])
+				{
+					case "normal" :
+						$codigo=mysqli_real_escape_string($this->cn,$object->get('codigo'));
+						$this->do_operation("DELETE FROM cita WHERE (codigo = '$codigo');");
+					break;
+				}
+				break;
+				
+				
+			case "bien_raiz":
+				
+				switch($options['lvl2'])
+				{
+					case "normal" :
+						$numero_escritura=mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
+						$this->do_operation("DELETE FROM bien_raiz WHERE (numero_escritura = '$numero_escritura');");
+					break;
+				}
+				break;
+				
 			default: break;			  
 		}
 	}
@@ -691,6 +727,12 @@ class db
                                     $hora = mysqli_real_escape_string($this->cn,$data['hora']);
                                     $info = $this->get_data("SELECT * FROM cita where empleado = '$empleado' AND fecha = '$fecha' AND hora = '$hora';"); 
                                 break;
+                                
+                                case "one_2":
+                                	$cliente = mysqli_real_escape_string($this->cn,$data['cliente']);
+                                	$codigo = mysqli_real_escape_string($this->cn,$data['codigo']);
+                                	$info = $this->get_data("SELECT * FROM cita where cliente = '$cliente' AND codigo = '$codigo';");
+                                	break;
                         }
                         break;
                     
