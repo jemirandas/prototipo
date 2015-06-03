@@ -505,13 +505,24 @@ class db
 				switch($options['lvl2'])
 				{
 					case "normal" :
-						print_r2($object);
 						$codigo=mysqli_real_escape_string($this->cn,$object->get('codigo'));
 						$this->do_operation("DELETE FROM cita WHERE (codigo = '$codigo');");
 					break;
 				}
 				break;
-                    
+				
+				
+			case "bien_raiz":
+				
+				switch($options['lvl2'])
+				{
+					case "normal" :
+						$numero_escritura=mysqli_real_escape_string($this->cn,$object->get('numero_escritura'));
+						$this->do_operation("DELETE FROM bien_raiz WHERE (numero_escritura = '$numero_escritura');");
+					break;
+				}
+				break;
+				
 			default: break;			  
 		}
 	}

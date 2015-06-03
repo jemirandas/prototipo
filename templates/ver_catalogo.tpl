@@ -31,7 +31,7 @@
          <b>Nro de baños: {$bien_raiz[i]->get("numero_banos")}</br>    
          <b><a  href="{$gvar.l_global}ver_bien_raiz.php?escritura={$bien_raiz[i]->get("numero_escritura")}&sucursal={$bien_raiz[i]->get("sucursal")}&option=display">ver m&aacute;s</a></br>    
     </td>
-    <td VALIGN="MIDDLE" ALIGN="left" width=""><img src="bienes_raices\casa1.jpg" width="280" height="210"></td>
+    <td VALIGN="MIDDLE" ALIGN="left" width=""><img src="bienes_raices/casa1.jpg" width="280" height="210"></td>
 {if $smarty.section.i.index is not div by 2 }
     
 

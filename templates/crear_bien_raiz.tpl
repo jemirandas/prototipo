@@ -1,7 +1,41 @@
+ <!--bloque de funciones no usadas agregan checkboxes a un div de forma automatica-->
+ {literal}
+ <script> 
+
+
+
+var counterCheckBox = 0;
+function agregar_uploader(divName){
+	 var newdiv = document.createElement('div');
+ 
+	 
+				var contenido='uploadedfile'+counterCheckBox;
+               newdiv.innerHTML = "<input name="+contenido+"  type='file' />";
+
+			   
+               counterCheckBox++;
+
+          
+
+
+			newdiv.className  = "Linea_formulario";		  
+
+		  
+		  
+     document.getElementById(divName).appendChild(newdiv);
+}
+  </script>
+    {/literal}
+
+
+
+
+
+
 <form name="crear_bien_raiz" action="{$gvar.l_global}crear_bien_raiz.php?option=add" method="post" enctype="multipart/form-data">
 		
 		
-    <div class="Bloque_formulario" align="center">
+    <div class="Bloque_formulario" align="center" id=formulario>
 
 		<div class="Encabezado_formulario">Crear Bien raiz</div>
 		
@@ -26,12 +60,37 @@
 		</div>			
 		<div  class="Linea_formulario">
 			<div  class="Celda_formulario1" >Ingrese el numero de habitaciones:<font color="red">*</font> </div>
-			<div class="Celda_formulario2"><input required type="number" name="numero_habitaciones" {if $form ne null} value="{$form->get('numero_habitaciones')}" {/if} /></div>
+			<div class="Celda_formulario2">
+				<select name="numero_habitaciones">
+
+				{for $foo=1 to 5}
+						<option value=$foo {if $form ne null and ($form->get('numero_habitaciones') == $foo) } selected {/if} >
+							{$foo}
+			
+						</option>
+				
+				{/for}
+				</select>
+			
+			</div>
 		</div>
 
 		<div  class="Linea_formulario">
 			<div  class="Celda_formulario1" >Ingrese el numero de baños:<font color="red">*</font> </div>
-			<div class="Celda_formulario2"><input required type="number" name="numero_banos" {if $form ne null} value="{$form->get('numero_banos')}" {/if} /></div>
+			<div class="Celda_formulario2">
+			
+				<select name="numero_baños">
+
+				{for $foo=1 to 4}
+						<option value=$foo {if $form ne null and ($form->get('numero_baños') == $foo) } selected {/if} >
+							{$foo}
+			
+						</option>
+				
+				{/for}
+				</select>
+			
+			</div>
 		</div>
 		<div   class="Linea_formulario" >
 			<div class="Celda_formulario1">Ingrese el area:<font color="red">*</font> </div>
@@ -79,8 +138,10 @@
 			
 		</div>	
 
-		<div class="Linea_formulario"> 
+		<div class="Linea_formulario" > 
 			<div class="Celda_formulario1" ><input name="uploadedfile" type="file" /></div>
+			<div class="Celda_formulario2" ><input name="agregar" type="button" value=agregar onclick="agregar_uploader('formulario')"/></div>
+
 		</div>
 	
 
@@ -89,16 +150,16 @@
 
 		
 				
+
+		
+	</div>
+	
+</form>
 		<div colspan="2">
 			<input class="btn btn-primary" type="submit" value="Crear" />
 			<input class="btn btn-primary" type="button" value="Regresar" onclick="regresarCrear()">	
 
 		</div>
-		
-	</div>
-	
-</form>
-
 
 			<script>
 function regresarCrear(){

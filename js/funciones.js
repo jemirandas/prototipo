@@ -1,4 +1,4 @@
-
+﻿
 function regresarEliminar(){
     
     var tam=document.getElementsByTagName("input").length;
@@ -25,7 +25,7 @@ function regresarEliminar(){
 }
 
 if(bandera==false){
-location.href="inicioAdministrador.php";
+location.href="index.php";
 }
 }
 
