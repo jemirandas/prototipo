@@ -4,6 +4,7 @@ class c_buscar_bien_raiz extends super_controller{
 
 public function buscar(){
 
+    $imagenes= array();
     $sucursal=$this->get->sucursal;
     $this->resultados = array();
     $precioVenta=$this->post->precioVenta;
@@ -30,6 +31,23 @@ public function buscar(){
     $this->orm->read_data(array("bien_raiz"), $options, $cod);
     $bien_raiz=$this->orm->get_objects("bien_raiz");
     //print_r2($bien_raiz);
+    $this->orm->close();
+    
+    $this->orm->connect();
+    foreach ($bien_raiz as $propiedad){
+        $cod['imagen']['bien_raiz']=$propiedad->get('numero_escritura');
+        $options['imagen']['lvl2']="varios";
+        $this->orm->read_data(array("imagen"), $options, $cod);  
+        $imagen= $this->orm->get_objects("imagen");
+        if(is_null($imagen)){
+            break;
+        }
+        else{
+        $imagenes=array_merge($imagenes,$imagen); 
+        }
+    }
+
+    //print_r2($imagenes);
     $this->orm->close();
     
     
@@ -102,6 +120,7 @@ public function display(){
     $this->engine->display($this->temp_aux);
     
     //print_r2($this->resultados);
+    $this->engine->assign('imagenes',$imagenes);
     $this->engine->assign('nroElementos',count($this->resultados));
     if(count($this->resultados)==0){
         $this->engine->assign('title','Resultados busqueda');

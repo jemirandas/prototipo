@@ -5,10 +5,12 @@
 <h4>Clic en el siguiente bot&oacuten para realizar una b&uacute;squeda avanzada</br> </h4>
 
     <b><input class="btn btn-primary" type="submit" value="Búsqueda Avanzada" /></b></br>
+<h4>Clic en el siguiente enlace para cancelar una cita</br> </h4>
+    <b><a href="{$gvar.l_global}cancelar_cita.php?sucursal={$bien_raiz[0]->get("sucursal")}option=display">Cancelar cita</a> 
     <br></br>
 
-    <h4>Lista de todos los bienes ra&iacute;ces</h4>    
-<br>
+    <h4>Lista de todos los bienes ra&iacute;ces</h4>
+
 <table border="0" width="100%" cellpadding="10" cellspacing="10">
 
 <tr>
@@ -31,7 +33,11 @@
          <b>Nro de baños: {$bien_raiz[i]->get("numero_banos")}</br>    
          <b><a  href="{$gvar.l_global}ver_bien_raiz.php?escritura={$bien_raiz[i]->get("numero_escritura")}&sucursal={$bien_raiz[i]->get("sucursal")}&option=display">ver m&aacute;s</a></br>    
     </td>
-    <td VALIGN="MIDDLE" ALIGN="left" width=""><img src="bienes_raices\casa1.jpg" width="280" height="210"></td>
+{section loop=$imagenes name=j}
+    {if $imagenes[j]->get('bien_raiz') eq $bien_raiz[i]->get("numero_escritura")}
+    <td VALIGN="MIDDLE" ALIGN="left" width=""><img src={$imagenes[j]->get("ruta")} width="280" height="210"></td>
+    {/if}
+{/section}
 {if $smarty.section.i.index is not div by 2 }
     
 

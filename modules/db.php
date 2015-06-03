@@ -521,6 +521,22 @@ class db
 			}
 			break;
                         
+                        case "imagen":
+			switch($option['lvl2'])
+			{
+				case "one": 
+                                    $numero_escritura=mysqli_real_escape_string($this->cn,$data['bien_raiz']); 
+                                    $info = $this->get_data("SELECT * FROM imagen WHERE bien_raiz = '$numero_escritura';");
+				break;
+
+				case "varios":                                            
+                                    $numero_escritura=mysqli_real_escape_string($this->cn,$data['bien_raiz']);   
+                                    $info = $this->get_data("SELECT * FROM imagen WHERE bien_raiz = '$numero_escritura' limit 1;");
+                                    //$info = $this->get_data("SELECT DISTINCT bien_raiz FROM imagen WHERE bien_raiz = '$numero_escritura';");
+                                break;
+			}
+			break;                        
+                        
                         case "persona":
 			switch($option['lvl2'])
 			{
@@ -640,6 +656,7 @@ class db
                             case "one": 
                                 $nro = mysqli_real_escape_string($this->cn,$data['numero_escritura']);
                                 $info = $this->get_data("SELECT * FROM bien_raiz where numero_escritura = '$nro';"); 
+                                //print_r2($info);
 			     break;  
                          
                  	    case "all": 
