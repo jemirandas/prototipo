@@ -640,7 +640,7 @@ class db
                                         $password=mysqli_real_escape_string($this->cn,$data['password']);					
                                         $result = $this->get_data("SELECT * FROM administrador WHERE nombre_de_usuario = '$nombre_de_usuario';");
 					$cedula=$result[0]->cedula;
-					$result = $this->get_data("SELECT persona.*, administrador.nombre_de_usuario, administrador.password FROM persona INNER JOIN administrador ON (administrador.cedula=$cedula) AND (persona.cedula='$cedula');");
+					$result = $this->get_data("SELECT persona.*, administrador.nombre_de_usuario, administrador.password FROM persona INNER JOIN administrador ON (administrador.cedula='$cedula') AND (persona.cedula='$cedula');");
 					
 					$stored_hash=$result[0]->password;
 					
